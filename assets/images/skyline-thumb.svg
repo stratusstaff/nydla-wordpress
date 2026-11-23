@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" role="img" aria-label="New York skyline thumbnail placeholder">
+  <defs>
+    <linearGradient id="thumb-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A2A40"/>
+      <stop offset="100%" stop-color="#6B8CAE"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#thumb-sky)"/>
+  <g fill="#0B1220">
+    <rect x="30" y="180" width="35" height="160"/>
+    <rect x="75" y="140" width="45" height="200"/>
+    <rect x="135" y="160" width="30" height="180"/>
+    <rect x="175" y="100" width="55" height="240"/>
+    <rect x="245" y="130" width="40" height="210"/>
+    <rect x="300" y="80" width="40" height="260"/>
+    <polygon points="320,80 320,40 321,40 321,80"/>
+    <rect x="355" y="120" width="55" height="220"/>
+    <rect x="425" y="95" width="40" height="245"/>
+    <rect x="480" y="140" width="50" height="200"/>
+    <rect x="545" y="115" width="35" height="225"/>
+    <rect x="590" y="155" width="30" height="185"/>
+  </g>
+  <g fill="#C9852A" opacity="0.75">
+    <rect x="190" y="130" width="3" height="4"/><rect x="210" y="160" width="3" height="4"/>
+    <rect x="315" y="120" width="3" height="4"/><rect x="440" y="140" width="3" height="4"/>
+  </g>
+  <rect y="340" width="640" height="60" fill="#0B1220"/>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="800" viewBox="0 0 1920 800" role="img" aria-label="New York skyline placeholder">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A2A40"/>
+      <stop offset="55%" stop-color="#2A3F5C"/>
+      <stop offset="100%" stop-color="#5A6F88"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#C9852A" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#C9852A" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#C9852A" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="800" fill="url(#sky)"/>
+  <ellipse cx="960" cy="520" rx="520" ry="40" fill="url(#glow)"/>
+  <!-- Mid skyline massing -->
+  <g fill="#0B1220">
+    <rect x="120" y="420" width="70" height="280"/>
+    <rect x="210" y="360" width="90" height="340"/>
+    <rect x="320" y="390" width="55" height="310"/>
+    <rect x="390" y="300" width="110" height="400"/>
+    <rect x="520" y="350" width="80" height="350"/>
+    <rect x="620" y="280" width="70" height="420"/>
+    <rect x="710" y="330" width="100" height="370"/>
+    <rect x="830" y="240" width="95" height="460"/>
+    <polygon points="877,240 877,180 878,180 878,240"/>
+    <rect x="950" y="310" width="120" height="390"/>
+    <rect x="1090" y="270" width="85" height="430"/>
+    <rect x="1190" y="340" width="100" height="360"/>
+    <rect x="1310" y="290" width="75" height="410"/>
+    <rect x="1405" y="360" width="110" height="340"/>
+    <rect x="1535" y="320" width="70" height="380"/>
+    <rect x="1625" y="380" width="95" height="320"/>
+    <rect x="1740" y="350" width="80" height="350"/>
+  </g>
+  <!-- Warm window lights -->
+  <g fill="#C9852A" opacity="0.75">
+    <rect x="230" y="400" width="4" height="6"/><rect x="245" y="420" width="4" height="6"/><rect x="260" y="445" width="4" height="6"/>
+    <rect x="420" y="340" width="4" height="6"/><rect x="440" y="370" width="4" height="6"/><rect x="460" y="400" width="4" height="6"/>
+    <rect x="860" y="300" width="4" height="6"/><rect x="880" y="330" width="4" height="6"/><rect x="900" y="360" width="4" height="6"/>
+    <rect x="1120" y="320" width="4" height="6"/><rect x="1140" y="350" width="4" height="6"/>
+    <rect x="1440" y="400" width="4" height="6"/><rect x="1465" y="430" width="4" height="6"/>
+  </g>
+  <rect y="700" width="1920" height="100" fill="#0B1220"/>
+</svg>

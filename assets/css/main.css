@@ -1,0 +1,736 @@
+/**
+ * NYDLA WordPress — visual system + chrome
+ * Tokens mirror theme.json. Lean, no page-builder bloat.
+ */
+
+:root {
+	--nydla-ink: #0b1220;
+	--nydla-navy: #13233a;
+	--nydla-steel: #3a4f6a;
+	--nydla-mist: #e8eef5;
+	--nydla-paper: #f7f9fc;
+	--nydla-amber: #c9852a;
+	--nydla-sky: #6b8cae;
+	--nydla-white: #ffffff;
+	--nydla-font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+	--nydla-font-sans: "Segoe UI", "Helvetica Neue", Arial, system-ui, sans-serif;
+	--nydla-space-xs: 0.5rem;
+	--nydla-space-sm: 1rem;
+	--nydla-space-md: 1.5rem;
+	--nydla-space-lg: 2.5rem;
+	--nydla-space-xl: 4rem;
+	--nydla-space-xxl: 6rem;
+	--nydla-content: 42rem;
+	--nydla-wide: 70rem;
+	--nydla-header-h: 4.25rem;
+	--nydla-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	font-family: var(--nydla-font-sans);
+	font-size: 1.0625rem;
+	line-height: 1.6;
+	color: var(--nydla-ink);
+	background:
+		radial-gradient(120% 80% at 50% -10%, rgba(107, 140, 174, 0.18), transparent 55%),
+		linear-gradient(180deg, var(--nydla-mist) 0%, var(--nydla-paper) 28%, var(--nydla-paper) 100%);
+	min-height: 100vh;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+a {
+	color: var(--nydla-navy);
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.18em;
+	transition: color 0.2s var(--nydla-ease);
+}
+
+a:hover,
+a:focus-visible {
+	color: var(--nydla-amber);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--nydla-font-display);
+	font-weight: 600;
+	line-height: 1.15;
+	color: var(--nydla-ink);
+	margin: 0 0 0.5em;
+}
+
+p {
+	margin: 0 0 1em;
+}
+
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+.skip-link:focus {
+	clip: auto;
+	clip-path: none;
+	height: auto;
+	left: 1rem;
+	top: 1rem;
+	width: auto;
+	z-index: 100000;
+	background: var(--nydla-white);
+	color: var(--nydla-ink);
+	padding: 0.5rem 1rem;
+	box-shadow: 0 4px 24px rgba(11, 18, 32, 0.12);
+}
+
+/* Buttons */
+.button,
+.wp-block-button__link,
+.nydla-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 0.75rem 1.35rem;
+	font-family: var(--nydla-font-sans);
+	font-size: 0.9375rem;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	line-height: 1.2;
+	text-decoration: none;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	cursor: pointer;
+	background: var(--nydla-navy);
+	color: var(--nydla-white);
+	transition: background 0.2s var(--nydla-ease), color 0.2s var(--nydla-ease), border-color 0.2s var(--nydla-ease), transform 0.2s var(--nydla-ease);
+}
+
+.button:hover,
+.wp-block-button__link:hover,
+.nydla-btn:hover,
+.button:focus-visible,
+.wp-block-button__link:focus-visible,
+.nydla-btn:focus-visible {
+	background: var(--nydla-ink);
+	color: var(--nydla-white);
+	text-decoration: none;
+}
+
+.nydla-btn--ghost {
+	background: transparent;
+	color: var(--nydla-white);
+	border-color: rgba(255, 255, 255, 0.55);
+}
+
+.nydla-btn--ghost:hover,
+.nydla-btn--ghost:focus-visible {
+	background: var(--nydla-white);
+	color: var(--nydla-navy);
+	border-color: var(--nydla-white);
+}
+
+.nydla-btn--amber {
+	background: var(--nydla-amber);
+	color: var(--nydla-ink);
+}
+
+.nydla-btn--amber:hover,
+.nydla-btn--amber:focus-visible {
+	background: #b37522;
+	color: var(--nydla-ink);
+}
+
+/* Layout */
+.site-main {
+	min-height: 50vh;
+}
+
+.content-area {
+	max-width: var(--nydla-wide);
+	margin-inline: auto;
+	padding: var(--nydla-space-lg) var(--nydla-space-md);
+}
+
+.entry-content > *:first-child {
+	margin-top: 0;
+}
+
+.entry-title {
+	font-size: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+/* ——— Header ——— */
+.site-header {
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+	background: rgba(247, 249, 252, 0.88);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	border-bottom: 1px solid rgba(58, 79, 106, 0.12);
+}
+
+.site-header__inner {
+	max-width: var(--nydla-wide);
+	margin-inline: auto;
+	padding: 0.85rem var(--nydla-space-md);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--nydla-space-md);
+	min-height: var(--nydla-header-h);
+}
+
+.site-branding {
+	flex-shrink: 0;
+}
+
+.site-branding .custom-logo-link img,
+.site-branding .custom-logo {
+	max-height: 2.5rem;
+	width: auto;
+}
+
+.site-title {
+	font-family: var(--nydla-font-display);
+	font-size: 1.35rem;
+	font-weight: 600;
+	letter-spacing: 0.01em;
+	color: var(--nydla-ink);
+	text-decoration: none;
+}
+
+.site-title:hover,
+.site-title:focus-visible {
+	color: var(--nydla-amber);
+}
+
+.site-header__toggle {
+	display: none;
+	appearance: none;
+	background: transparent;
+	border: 1px solid rgba(58, 79, 106, 0.25);
+	border-radius: 2px;
+	width: 2.75rem;
+	height: 2.75rem;
+	padding: 0;
+	cursor: pointer;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.site-header__toggle-bar {
+	display: block;
+	width: 1.15rem;
+	height: 2px;
+	background: var(--nydla-navy);
+	transition: transform 0.25s var(--nydla-ease), opacity 0.2s;
+}
+
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:nth-child(1) {
+	transform: translateY(7px) rotate(45deg);
+}
+
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:nth-child(2) {
+	opacity: 0;
+}
+
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:nth-child(3) {
+	transform: translateY(-7px) rotate(-45deg);
+}
+
+.site-nav__list {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.15rem 1.35rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.site-nav__list a {
+	font-size: 0.9375rem;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	text-decoration: none;
+	color: var(--nydla-steel);
+	padding: 0.35rem 0;
+}
+
+.site-nav__list a:hover,
+.site-nav__list a:focus-visible,
+.site-nav__list .current-menu-item > a,
+.site-nav__list .current_page_item > a {
+	color: var(--nydla-ink);
+}
+
+.site-nav__list .sub-menu {
+	display: none;
+}
+
+@media (max-width: 860px) {
+	.site-header__toggle {
+		display: inline-flex;
+	}
+
+	.site-nav {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 100%;
+		background: var(--nydla-paper);
+		border-bottom: 1px solid rgba(58, 79, 106, 0.12);
+		padding: var(--nydla-space-sm) var(--nydla-space-md) var(--nydla-space-md);
+		display: none;
+		box-shadow: 0 16px 40px rgba(11, 18, 32, 0.08);
+	}
+
+	.site-nav.is-open {
+		display: block;
+	}
+
+	.site-nav__list {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0;
+	}
+
+	.site-nav__list a {
+		display: block;
+		padding: 0.85rem 0;
+		border-bottom: 1px solid rgba(58, 79, 106, 0.1);
+	}
+}
+
+/* ——— Footer ——— */
+.site-footer {
+	margin-top: var(--nydla-space-xxl);
+	background:
+		linear-gradient(180deg, transparent 0%, rgba(19, 35, 58, 0.04) 12%),
+		var(--nydla-navy);
+	color: rgba(255, 255, 255, 0.82);
+}
+
+.site-footer a {
+	color: rgba(255, 255, 255, 0.88);
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+	color: var(--nydla-amber);
+}
+
+.site-footer__inner {
+	max-width: var(--nydla-wide);
+	margin-inline: auto;
+	padding: var(--nydla-space-xl) var(--nydla-space-md) var(--nydla-space-lg);
+	display: grid;
+	grid-template-columns: 1.4fr 1fr 1fr;
+	gap: var(--nydla-space-lg);
+}
+
+.site-footer__name {
+	font-family: var(--nydla-font-display);
+	font-size: 1.35rem;
+	font-weight: 600;
+	color: var(--nydla-white);
+	margin: 0 0 0.35em;
+}
+
+.site-footer__tagline {
+	margin: 0;
+	color: rgba(255, 255, 255, 0.65);
+	font-size: 0.9375rem;
+	max-width: 22rem;
+}
+
+.site-footer__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.55rem;
+}
+
+.site-footer__list a {
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 0.9375rem;
+}
+
+.site-footer__cta-label {
+	font-size: 0.8125rem;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: rgba(255, 255, 255, 0.55);
+	margin: 0 0 0.75rem;
+}
+
+.site-footer__meta {
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	padding: var(--nydla-space-md);
+	text-align: center;
+	font-size: 0.8125rem;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.site-footer__meta p {
+	margin: 0;
+}
+
+@media (max-width: 760px) {
+	.site-footer__inner {
+		grid-template-columns: 1fr;
+		gap: var(--nydla-space-md);
+	}
+}
+
+/* ——— Pattern shells ——— */
+.nydla-section {
+	padding: var(--nydla-space-xl) 0;
+}
+
+.nydla-section__inner {
+	max-width: var(--nydla-wide);
+	margin-inline: auto;
+	padding-inline: var(--nydla-space-md);
+}
+
+.nydla-eyebrow {
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--nydla-steel);
+	margin: 0 0 0.75rem;
+}
+
+.nydla-lead {
+	font-size: clamp(1.05rem, 2vw, 1.2rem);
+	color: var(--nydla-steel);
+	max-width: 36rem;
+	margin: 0 0 1.5rem;
+}
+
+/* Home hero — full-bleed skyline */
+.nydla-hero {
+	position: relative;
+	min-height: min(88vh, 52rem);
+	display: grid;
+	align-items: end;
+	color: var(--nydla-white);
+	overflow: hidden;
+	isolation: isolate;
+}
+
+.nydla-hero__media {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+}
+
+.nydla-hero__media img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.nydla-hero__media::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background:
+		linear-gradient(180deg, rgba(11, 18, 32, 0.35) 0%, rgba(11, 18, 32, 0.15) 40%, rgba(11, 18, 32, 0.78) 100%);
+}
+
+.nydla-hero__content {
+	max-width: var(--nydla-wide);
+	width: 100%;
+	margin-inline: auto;
+	padding: var(--nydla-space-xxl) var(--nydla-space-md) var(--nydla-space-xl);
+}
+
+.nydla-hero__brand {
+	font-family: var(--nydla-font-display);
+	font-size: clamp(2.75rem, 8vw, 5.5rem);
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	line-height: 0.95;
+	margin: 0 0 0.4em;
+	color: var(--nydla-white);
+}
+
+.nydla-hero__text {
+	font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+	max-width: 28rem;
+	margin: 0 0 1.75rem;
+	color: rgba(255, 255, 255, 0.88);
+}
+
+.nydla-hero__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+}
+
+/* About / mission band */
+.nydla-mission {
+	display: grid;
+	grid-template-columns: 1.1fr 0.9fr;
+	gap: var(--nydla-space-lg);
+	align-items: center;
+}
+
+.nydla-mission__visual img {
+	width: 100%;
+	aspect-ratio: 16 / 10;
+	object-fit: cover;
+}
+
+.nydla-mission__title {
+	font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+	margin-bottom: 0.65em;
+}
+
+@media (max-width: 800px) {
+	.nydla-mission {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Sponsors / podcasts / events shells */
+.nydla-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: var(--nydla-space-md);
+}
+
+.nydla-grid--2 {
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.nydla-slot {
+	background: transparent;
+	border: 0;
+	padding: 0;
+	min-width: 0;
+}
+
+.nydla-slot__media {
+	margin: 0 0 0.85rem;
+	overflow: hidden;
+	background: var(--nydla-navy);
+}
+
+.nydla-slot__media img {
+	width: 100%;
+	aspect-ratio: 16 / 10;
+	object-fit: cover;
+	opacity: 0.92;
+	transition: transform 0.45s var(--nydla-ease), opacity 0.3s;
+}
+
+.nydla-slot:hover .nydla-slot__media img,
+.nydla-slot:focus-within .nydla-slot__media img {
+	transform: scale(1.03);
+	opacity: 1;
+}
+
+.nydla-slot__title {
+	font-family: var(--nydla-font-display);
+	font-size: 1.2rem;
+	margin: 0 0 0.35em;
+}
+
+.nydla-slot__meta {
+	font-size: 0.875rem;
+	color: var(--nydla-steel);
+	margin: 0;
+}
+
+@media (max-width: 900px) {
+	.nydla-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 560px) {
+	.nydla-grid,
+	.nydla-grid--2 {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Contact / Join CTA */
+.nydla-cta {
+	position: relative;
+	isolation: isolate;
+	color: var(--nydla-white);
+	overflow: hidden;
+}
+
+.nydla-cta__media {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+}
+
+.nydla-cta__media img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.nydla-cta__media::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(105deg, rgba(11, 18, 32, 0.88) 0%, rgba(19, 35, 58, 0.72) 55%, rgba(19, 35, 58, 0.45) 100%);
+}
+
+.nydla-cta__inner {
+	max-width: var(--nydla-wide);
+	margin-inline: auto;
+	padding: var(--nydla-space-xl) var(--nydla-space-md);
+}
+
+.nydla-cta__title {
+	font-size: clamp(1.85rem, 4vw, 2.75rem);
+	color: var(--nydla-white);
+	margin-bottom: 0.4em;
+}
+
+.nydla-cta__text {
+	max-width: 32rem;
+	margin: 0 0 1.5rem;
+	color: rgba(255, 255, 255, 0.85);
+}
+
+/* Mini-site hero (NYDLA.biz / vendor) */
+.nydla-mini-hero {
+	position: relative;
+	isolation: isolate;
+	min-height: 22rem;
+	display: grid;
+	align-items: center;
+	color: var(--nydla-white);
+	overflow: hidden;
+}
+
+.nydla-mini-hero__media {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+}
+
+.nydla-mini-hero__media img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.nydla-mini-hero__media::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(90deg, rgba(11, 18, 32, 0.82) 0%, rgba(11, 18, 32, 0.35) 70%);
+}
+
+.nydla-mini-hero__content {
+	max-width: var(--nydla-wide);
+	margin-inline: auto;
+	padding: var(--nydla-space-xl) var(--nydla-space-md);
+	width: 100%;
+}
+
+.nydla-mini-hero__brand {
+	font-family: var(--nydla-font-display);
+	font-size: clamp(2rem, 5vw, 3.25rem);
+	margin: 0 0 0.35em;
+	color: var(--nydla-white);
+}
+
+.nydla-mini-hero__text {
+	max-width: 28rem;
+	margin: 0;
+	color: rgba(255, 255, 255, 0.85);
+}
+
+/* 404 */
+.error-404__visual {
+	margin: var(--nydla-space-lg) 0 0;
+}
+
+.error-404__visual img {
+	width: 100%;
+	max-height: 16rem;
+	object-fit: cover;
+}
+
+/* Motion — subtle presence */
+@media (prefers-reduced-motion: no-preference) {
+	.nydla-hero__brand,
+	.nydla-hero__text,
+	.nydla-hero__actions {
+		animation: nydla-rise 0.7s var(--nydla-ease) both;
+	}
+
+	.nydla-hero__text {
+		animation-delay: 0.08s;
+	}
+
+	.nydla-hero__actions {
+		animation-delay: 0.16s;
+	}
+
+	.site-header {
+		animation: nydla-fade 0.5s var(--nydla-ease) both;
+	}
+}
+
+@keyframes nydla-rise {
+	from {
+		opacity: 0;
+		transform: translateY(0.75rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes nydla-fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

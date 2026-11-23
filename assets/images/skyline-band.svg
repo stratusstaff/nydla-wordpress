@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="480" viewBox="0 0 1600 480" role="img" aria-label="New York skyline band placeholder">
+  <defs>
+    <linearGradient id="band-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#13233A"/>
+      <stop offset="100%" stop-color="#4A6078"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="480" fill="url(#band-sky)"/>
+  <g fill="#0B1220">
+    <rect x="40" y="220" width="55" height="200"/>
+    <rect x="110" y="180" width="70" height="240"/>
+    <rect x="200" y="200" width="45" height="220"/>
+    <rect x="260" y="140" width="90" height="280"/>
+    <rect x="370" y="170" width="60" height="250"/>
+    <rect x="450" y="120" width="55" height="300"/>
+    <rect x="520" y="160" width="80" height="260"/>
+    <rect x="620" y="90" width="75" height="330"/>
+    <polygon points="657,90 657,40 658,40 658,90"/>
+    <rect x="720" y="140" width="95" height="280"/>
+    <rect x="835" y="110" width="65" height="310"/>
+    <rect x="920" y="160" width="80" height="260"/>
+    <rect x="1020" y="130" width="55" height="290"/>
+    <rect x="1095" y="175" width="90" height="245"/>
+    <rect x="1205" y="150" width="55" height="270"/>
+    <rect x="1280" y="190" width="75" height="230"/>
+    <rect x="1375" y="160" width="60" height="260"/>
+    <rect x="1455" y="200" width="85" height="220"/>
+  </g>
+  <g fill="#C9852A" opacity="0.7">
+    <rect x="285" y="180" width="3" height="5"/><rect x="300" y="210" width="3" height="5"/>
+    <rect x="640" y="150" width="3" height="5"/><rect x="655" y="180" width="3" height="5"/>
+    <rect x="860" y="160" width="3" height="5"/><rect x="1120" y="210" width="3" height="5"/>
+  </g>
+  <rect y="420" width="1600" height="60" fill="#0B1220"/>
+</svg>
