@@ -29,8 +29,8 @@ $nydla_logo_alt = sprintf(
 			<img
 				src="<?php echo esc_url( $nydla_logo_url ); ?>"
 				alt="<?php echo esc_attr( $nydla_logo_alt ); ?>"
-				width="432"
-				height="106"
+				width="1200"
+				height="341"
 				decoding="async"
 				fetchpriority="high"
 			>
