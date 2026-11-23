@@ -11,8 +11,8 @@ Yes — that **is** the WordPress **Site Title**.
 
 | Setting | Current value | Problem |
 | --- | --- | --- |
-| **Site Title** | `merciful-darkturquoise-giraffe-37.hostingersite.com` | Shows in the **header** (as the “logo” text) and **footer** brand name, browser tab, copyright line |
-| **Tagline / Description** | Empty | Footer has nothing friendly under the name |
+| **Site Title** | **NYDLA** (updated) | Was the Hostinger giraffe URL — fixed |
+| **Tagline / Description** | **New York Distance Learning Association** (updated) | Shows under the name when theme header supports it |
 | **Site Address (URL)** | `https://merciful-darkturquoise-giraffe-37.hostingersite.com` | Fine for staging — this is the real hosting address until NYDLA.com points here |
 
 **Fix later (Settings → General):**  
