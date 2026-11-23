@@ -1,9 +1,16 @@
 <?php
 /**
- * Theme header.
+ * Theme header — brand-first stacked chrome (logo above, nav below).
  *
  * @package Nydla_Wordpress
  */
+
+$nydla_logo_url = nydla_wp_brand_logo_url();
+$nydla_logo_alt = sprintf(
+	/* translators: %s: site name */
+	__( '%s — New York Distance Learning Association', 'nydla-wordpress' ),
+	get_bloginfo( 'name', 'display' )
+);
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -17,53 +24,48 @@
 <a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'nydla-wordpress' ); ?></a>
 
 <header class="site-header" role="banner">
-	<div class="site-header__inner">
-		<div class="site-branding">
-			<?php if ( has_custom_logo() ) : ?>
-				<div class="site-branding__logo">
-					<?php the_custom_logo(); ?>
-				</div>
-			<?php endif; ?>
+	<div class="site-header__brand">
+		<a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+			<img
+				src="<?php echo esc_url( $nydla_logo_url ); ?>"
+				alt="<?php echo esc_attr( $nydla_logo_alt ); ?>"
+				width="432"
+				height="106"
+				decoding="async"
+				fetchpriority="high"
+			>
+		</a>
+	</div>
 
-			<div class="site-branding__text">
-				<a class="site-title" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<?php bloginfo( 'name' ); ?>
-				</a>
+	<div class="site-header__nav-row">
+		<div class="site-header__nav-inner">
+			<button
+				class="site-header__toggle"
+				type="button"
+				aria-controls="site-navigation"
+				aria-expanded="false"
+				data-nydla-nav-toggle
+			>
+				<span class="screen-reader-text"><?php esc_html_e( 'Menu', 'nydla-wordpress' ); ?></span>
+				<span class="site-header__toggle-bar" aria-hidden="true"></span>
+				<span class="site-header__toggle-bar" aria-hidden="true"></span>
+				<span class="site-header__toggle-bar" aria-hidden="true"></span>
+			</button>
+
+			<nav id="site-navigation" class="site-nav" aria-label="<?php esc_attr_e( 'Primary', 'nydla-wordpress' ); ?>" data-nydla-nav>
 				<?php
-				$nydla_tagline = get_bloginfo( 'description', 'display' );
-				if ( $nydla_tagline ) :
-					?>
-					<p class="site-tagline"><?php echo esc_html( $nydla_tagline ); ?></p>
-				<?php endif; ?>
-			</div>
+				wp_nav_menu(
+					array(
+						'theme_location' => 'primary',
+						'container'      => false,
+						'menu_class'     => 'site-nav__list',
+						'fallback_cb'    => 'nydla_wp_fallback_menu',
+						'depth'          => 2,
+					)
+				);
+				?>
+			</nav>
 		</div>
-
-		<button
-			class="site-header__toggle"
-			type="button"
-			aria-controls="site-navigation"
-			aria-expanded="false"
-			data-nydla-nav-toggle
-		>
-			<span class="screen-reader-text"><?php esc_html_e( 'Menu', 'nydla-wordpress' ); ?></span>
-			<span class="site-header__toggle-bar" aria-hidden="true"></span>
-			<span class="site-header__toggle-bar" aria-hidden="true"></span>
-			<span class="site-header__toggle-bar" aria-hidden="true"></span>
-		</button>
-
-		<nav id="site-navigation" class="site-nav" aria-label="<?php esc_attr_e( 'Primary', 'nydla-wordpress' ); ?>" data-nydla-nav>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'primary',
-					'container'      => false,
-					'menu_class'     => 'site-nav__list',
-					'fallback_cb'    => 'nydla_wp_fallback_menu',
-					'depth'          => 2,
-				)
-			);
-			?>
-		</nav>
 	</div>
 </header>
 
