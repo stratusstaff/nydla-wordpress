@@ -20,12 +20,22 @@
 	<div class="site-header__inner">
 		<div class="site-branding">
 			<?php if ( has_custom_logo() ) : ?>
-				<?php the_custom_logo(); ?>
-			<?php else : ?>
+				<div class="site-branding__logo">
+					<?php the_custom_logo(); ?>
+				</div>
+			<?php endif; ?>
+
+			<div class="site-branding__text">
 				<a class="site-title" href="<?php echo esc_url( home_url( '/' ) ); ?>">
 					<?php bloginfo( 'name' ); ?>
 				</a>
-			<?php endif; ?>
+				<?php
+				$nydla_tagline = get_bloginfo( 'description', 'display' );
+				if ( $nydla_tagline ) :
+					?>
+					<p class="site-tagline"><?php echo esc_html( $nydla_tagline ); ?></p>
+				<?php endif; ?>
+			</div>
 		</div>
 
 		<button
