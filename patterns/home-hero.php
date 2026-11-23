@@ -22,11 +22,11 @@
 	<!-- wp:group {"className":"nydla-hero__content","layout":{"type":"default"}} -->
 	<div class="wp-block-group nydla-hero__content">
 		<!-- wp:paragraph {"className":"nydla-eyebrow"} -->
-		<p class="nydla-eyebrow">Placeholder label</p>
+		<p class="nydla-eyebrow">New York Distance Learning Association</p>
 		<!-- /wp:paragraph -->
 
 		<!-- wp:heading {"level":1,"className":"nydla-hero__brand"} -->
-		<h1 class="wp-block-heading nydla-hero__brand">Brand name</h1>
+		<h1 class="wp-block-heading nydla-hero__brand">NYDLA</h1>
 		<!-- /wp:heading -->
 
 		<!-- wp:paragraph {"className":"nydla-hero__text"} -->

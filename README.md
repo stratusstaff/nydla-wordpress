@@ -1,10 +1,10 @@
 # NYDLA WordPress
 
-Lean custom WordPress theme for **NYDLA.com** (association) and future **NYDLA.biz** sponsor mini-sites.
+Lean custom WordPress theme for **NYDLA** — **New York Distance Learning Association** — on **NYDLA.com**, and future **NYDLA.biz** sponsor mini-sites.
 
 - Theme display name: **NYDLA WordPress**
 - Folder / text domain: `nydla-wordpress`
-- Version: **1.0.0** — structure ready for page builds (no content migration)
+- Version: **1.0.1** — structure ready for page builds (no content migration)
 
 No Elementor, GeneratePress, or page builders. Classic PHP templates + `theme.json` + block patterns.
 
