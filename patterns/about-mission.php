@@ -14,15 +14,15 @@
 		<!-- wp:group {"layout":{"type":"default"}} -->
 		<div class="wp-block-group">
 			<!-- wp:paragraph {"className":"nydla-eyebrow"} -->
-			<p class="nydla-eyebrow">About</p>
+			<p class="nydla-eyebrow">New York Distance Learning Association</p>
 			<!-- /wp:paragraph -->
 
 			<!-- wp:heading {"className":"nydla-mission__title"} -->
-			<h2 class="wp-block-heading nydla-mission__title">Mission headline</h2>
+			<h2 class="wp-block-heading nydla-mission__title">Living, learning, working in the cloud</h2>
 			<!-- /wp:heading -->
 
 			<!-- wp:paragraph {"className":"nydla-lead"} -->
-			<p class="nydla-lead">Short mission placeholder. Replace with your association story later.</p>
+			<p class="nydla-lead">A global forum for corporate, academic, and government leaders — exchanging ideas on digital, distance, and e-learning. Pair with the Journey arc and Three pillars patterns.</p>
 			<!-- /wp:paragraph -->
 
 			<!-- wp:paragraph -->

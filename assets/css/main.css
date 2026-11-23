@@ -683,6 +683,119 @@ p {
 	color: rgba(255, 255, 255, 0.85);
 }
 
+/* Journey arc — Distance → DIGITAL Learning → DIGITAL LIVING */
+.nydla-journey__title {
+	font-size: clamp(1.65rem, 3.5vw, 2.35rem);
+	margin-bottom: 1.5rem;
+	text-align: center;
+}
+
+.nydla-journey .nydla-eyebrow {
+	text-align: center;
+}
+
+.nydla-journey__track {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 0.65rem 0.85rem;
+	margin: 0 0 1.75rem;
+}
+
+.nydla-journey__step {
+	padding: 0.85rem 1.25rem;
+	border: 1px solid rgba(58, 79, 106, 0.22);
+	background: rgba(255, 255, 255, 0.55);
+}
+
+.nydla-journey__step.is-accent {
+	border-color: rgba(201, 133, 42, 0.45);
+	background: rgba(201, 133, 42, 0.1);
+}
+
+.nydla-journey__step.is-strong {
+	border-color: transparent;
+	background: var(--nydla-navy);
+}
+
+.nydla-journey__step.is-strong .nydla-journey__label {
+	color: var(--nydla-white);
+}
+
+.nydla-journey__label {
+	margin: 0;
+	font-family: var(--nydla-font-display);
+	font-size: clamp(1rem, 2vw, 1.2rem);
+	font-weight: 600;
+	letter-spacing: 0.01em;
+	color: var(--nydla-ink);
+}
+
+.nydla-journey__arrow {
+	margin: 0;
+	font-size: 1.25rem;
+	color: var(--nydla-amber);
+	font-weight: 600;
+}
+
+.nydla-journey__note {
+	margin-inline: auto;
+	text-align: center;
+}
+
+@media (max-width: 640px) {
+	.nydla-journey__arrow {
+		width: 100%;
+		text-align: center;
+		transform: rotate(90deg);
+	}
+
+	.nydla-journey__step {
+		width: 100%;
+		text-align: center;
+	}
+}
+
+/* Three pillars — Knowledge + Technology + Talent */
+.nydla-pillars__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: var(--nydla-space-md);
+	margin-top: var(--nydla-space-md);
+}
+
+.nydla-pillar {
+	padding: 0;
+	border-top: 2px solid var(--nydla-amber);
+	padding-top: 1.15rem;
+}
+
+.nydla-pillar__mark {
+	margin: 0 0 0.5rem;
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	color: var(--nydla-amber);
+}
+
+.nydla-pillar__title {
+	font-size: 1.45rem;
+	margin: 0 0 0.45em;
+}
+
+.nydla-pillar__text {
+	margin: 0;
+	color: var(--nydla-steel);
+	font-size: 0.975rem;
+}
+
+@media (max-width: 800px) {
+	.nydla-pillars__grid {
+		grid-template-columns: 1fr;
+	}
+}
+
 /* 404 */
 .error-404__visual {
 	margin: var(--nydla-space-lg) 0 0;
