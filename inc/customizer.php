@@ -445,6 +445,7 @@ function nydla_wp_rest_theme_mod_keys() {
 		'nydla_footer_copy',
 		'nydla_show_giving',
 		'nydla_show_social',
+		'nydla_partner_slide_count',
 	);
 }
 

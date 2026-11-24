@@ -45,9 +45,11 @@ if ( empty( $slides ) ) {
 			</article>
 		<?php endforeach; ?>
 	</div>
-	<div class="nydla-carousel__controls">
-		<div class="nydla-carousel__dots" data-nydla-carousel-dots aria-label="<?php esc_attr_e( 'Slides', 'nydla-wordpress' ); ?>"></div>
-		<button type="button" class="nydla-carousel__btn" data-nydla-carousel-prev aria-label="<?php esc_attr_e( 'Previous', 'nydla-wordpress' ); ?>">‹</button>
-		<button type="button" class="nydla-carousel__btn" data-nydla-carousel-next aria-label="<?php esc_attr_e( 'Next', 'nydla-wordpress' ); ?>">›</button>
-	</div>
+	<?php if ( count( $slides ) > 1 ) : ?>
+		<div class="nydla-carousel__controls">
+			<div class="nydla-carousel__dots" data-nydla-carousel-dots aria-label="<?php esc_attr_e( 'Slides', 'nydla-wordpress' ); ?>"></div>
+			<button type="button" class="nydla-carousel__btn" data-nydla-carousel-prev aria-label="<?php esc_attr_e( 'Previous', 'nydla-wordpress' ); ?>">‹</button>
+			<button type="button" class="nydla-carousel__btn" data-nydla-carousel-next aria-label="<?php esc_attr_e( 'Next', 'nydla-wordpress' ); ?>">›</button>
+		</div>
+	<?php endif; ?>
 </section>
