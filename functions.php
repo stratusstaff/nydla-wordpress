@@ -9,12 +9,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'NYDLA_WP_VERSION', '1.3.7' );
+define( 'NYDLA_WP_VERSION', '1.4.0' );
 define( 'NYDLA_WP_DIR', get_template_directory() );
 define( 'NYDLA_WP_URI', get_template_directory_uri() );
 
 require_once NYDLA_WP_DIR . '/inc/cmsp-placeholder.php';
 require_once NYDLA_WP_DIR . '/inc/customizer-partner-carousel.php';
+require_once NYDLA_WP_DIR . '/inc/customizer.php';
 
 /**
  * Ensure Home (page ID 10) is the static front page once.

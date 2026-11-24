@@ -61,7 +61,8 @@ function nydla_wp_customize_partner_carousel( $wp_customize ) {
 		array(
 			'title'       => __( 'Page-1 Partners', 'nydla-wordpress' ),
 			'description' => __( 'Home hero carousel — sold featured-partner placements (title, text, CTA, image). Not the sponsors logo gallery.', 'nydla-wordpress' ),
-			'priority'    => 32,
+			'panel'       => 'nydla_theme',
+			'priority'    => 50,
 		)
 	);
 

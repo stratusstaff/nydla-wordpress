@@ -202,17 +202,17 @@ p {
 	position: sticky;
 	top: 0;
 	z-index: 1000;
-	background: #fff;
-	border-bottom: 1px solid rgba(58, 79, 106, 0.12);
+	background: var(--nydla-header-bg, #fff);
+	border-bottom: 1px solid var(--nydla-header-border, rgba(58, 79, 106, 0.12));
 	box-shadow: none;
 }
 
 .site-header__brand {
 	display: flex;
-	justify-content: center;
+	justify-content: var(--nydla-logo-justify, center);
 	align-items: center;
-	padding: 1.15rem var(--nydla-space-md) 0.55rem;
-	background: #fff;
+	padding: var(--nydla-logo-pad-y, 1.15rem) var(--nydla-space-md) calc(var(--nydla-logo-pad-y, 1.15rem) * 0.45);
+	background: var(--nydla-logo-area-bg, #fff);
 	line-height: 0;
 	border: 0;
 	overflow: hidden;
@@ -240,14 +240,14 @@ p {
 
 .site-logo img {
 	display: block;
-	width: min(22rem, 80vw);
+	width: min(var(--nydla-logo-max-w, 22rem), 80vw);
 	height: auto;
-	max-height: 3.85rem;
+	max-height: var(--nydla-logo-max-h, 3.85rem);
 	object-fit: contain;
 }
 
 .site-header__nav-row {
-	background: #fff;
+	background: var(--nydla-header-bg, #fff);
 	position: relative;
 	z-index: 1;
 	border: 0;
@@ -325,7 +325,7 @@ p {
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 	text-decoration: none;
-	color: var(--nydla-navy);
+	color: var(--nydla-nav-link, var(--nydla-navy));
 	padding: 0.55rem 0.9rem;
 	border-bottom: 2px solid transparent;
 	transition: color 0.2s var(--nydla-ease), border-color 0.2s var(--nydla-ease), background 0.2s var(--nydla-ease);
@@ -333,15 +333,15 @@ p {
 
 .site-nav__list > li > a:hover,
 .site-nav__list > li > a:focus-visible {
-	color: var(--nydla-ink);
-	border-bottom-color: var(--nydla-amber);
+	color: var(--nydla-nav-hover, var(--nydla-ink));
+	border-bottom-color: var(--nydla-nav-underline, var(--nydla-amber));
 	background: transparent;
 }
 
 .site-nav__list .current-menu-item > a,
 .site-nav__list .current_page_item > a {
-	color: var(--nydla-ink);
-	border-bottom-color: var(--nydla-amber);
+	color: var(--nydla-nav-hover, var(--nydla-ink));
+	border-bottom-color: var(--nydla-nav-underline, var(--nydla-amber));
 }
 
 .site-nav__list .sub-menu {
@@ -410,9 +410,9 @@ p {
 .site-footer {
 	flex-shrink: 0;
 	margin-top: 0;
-	background: #0a1422;
+	background: var(--nydla-footer-bg, #0a1422);
 	color: rgba(255, 255, 255, 0.72);
-	border-top: 2px solid var(--nydla-amber);
+	border-top: 2px solid var(--nydla-footer-accent, var(--nydla-amber));
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
