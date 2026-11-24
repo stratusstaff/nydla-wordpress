@@ -46,9 +46,18 @@ function nydla_wp_cmsp_placeholder_shortcode( $atts ) {
 	ob_start();
 	?>
 	<div class="nydla-cmsp-placeholder" data-nydla-cmsp="<?php echo esc_attr( $type ); ?>" role="note">
-		<p class="nydla-cmsp-placeholder__code">[NYDLA-CMSP type="<?php echo esc_attr( $type ); ?>"]</p>
 		<p class="nydla-cmsp-placeholder__label"><?php echo esc_html( $human ); ?></p>
-		<p class="nydla-cmsp-placeholder__hint"><?php esc_html_e( 'Placeholder for the NYDLA content-management plugin. Home Page-1 partner carousel is edited in Appearance → Customize → Page-1 Partners.', 'nydla-wordpress' ); ?></p>
+		<?php if ( 'sponsors' === $type ) : ?>
+			<ul class="nydla-cmsp-placeholder__grid" aria-hidden="true">
+				<?php for ( $i = 0; $i < 8; $i++ ) : ?>
+					<li class="nydla-cmsp-placeholder__slot"><?php esc_html_e( 'Logo', 'nydla-wordpress' ); ?></li>
+				<?php endfor; ?>
+			</ul>
+			<p class="nydla-cmsp-placeholder__hint"><?php esc_html_e( 'Sponsor logos will appear here when the NYDLA CMSP plugin is live. Shortcode: [NYDLA-CMSP type="sponsors"]', 'nydla-wordpress' ); ?></p>
+		<?php else : ?>
+			<p class="nydla-cmsp-placeholder__code">[NYDLA-CMSP type="<?php echo esc_attr( $type ); ?>"]</p>
+			<p class="nydla-cmsp-placeholder__hint"><?php esc_html_e( 'Placeholder for the NYDLA content-management plugin.', 'nydla-wordpress' ); ?></p>
+		<?php endif; ?>
 	</div>
 	<?php
 	return (string) ob_get_clean();

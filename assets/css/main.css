@@ -533,11 +533,11 @@ p {
 
 /* CMSP placeholder */
 .nydla-cmsp-placeholder {
-	border: 1px dashed rgba(201, 133, 42, 0.55);
-	background: linear-gradient(160deg, rgba(19, 35, 58, 0.06), rgba(201, 133, 42, 0.08));
-	padding: 2.5rem 1.75rem;
+	border: 1px dashed rgba(201, 133, 42, 0.7);
+	background: rgba(255, 255, 255, 0.92);
+	padding: 2rem 1.5rem 1.75rem;
 	text-align: center;
-	margin: 0;
+	margin: 1.25rem 0 0;
 }
 
 .nydla-cmsp-placeholder__code {
@@ -551,16 +551,52 @@ p {
 .nydla-cmsp-placeholder__label {
 	font-family: var(--nydla-font-display);
 	font-size: 1.35rem;
-	margin: 0 0 0.5rem;
+	margin: 0 0 1rem;
 	color: var(--nydla-ink);
 }
 
 .nydla-cmsp-placeholder__hint {
-	margin: 0;
+	margin: 1rem 0 0;
 	color: var(--nydla-steel);
 	font-size: 0.9rem;
-	max-width: 28rem;
+	max-width: 34rem;
 	margin-inline: auto;
+	line-height: 1.45;
+}
+
+.nydla-cmsp-placeholder__grid {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 0.85rem;
+}
+
+.nydla-cmsp-placeholder__slot {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 4.25rem;
+	border: 1px solid rgba(19, 35, 58, 0.14);
+	background: #fff;
+	color: var(--nydla-steel);
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.nydla-band--navy .nydla-cmsp-placeholder {
+	background: rgba(255, 255, 255, 0.97);
+	border-color: rgba(201, 133, 42, 0.85);
+	box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+}
+
+@media (max-width: 800px) {
+	.nydla-cmsp-placeholder__grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
 }
 
 /* Shared page shells used by design-plan content */
