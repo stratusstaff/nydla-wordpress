@@ -1287,6 +1287,10 @@ p {
 	padding: var(--nydla-space-xxl) var(--nydla-space-md) var(--nydla-space-xl);
 }
 
+.nydla-carousel .nydla-eyebrow {
+	color: rgba(255, 255, 255, 0.7);
+}
+
 .nydla-carousel__brand {
 	font-family: var(--nydla-font-display);
 	font-size: clamp(2.6rem, 7vw, 5rem);
