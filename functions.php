@@ -16,6 +16,27 @@ define( 'NYDLA_WP_URI', get_template_directory_uri() );
 require_once NYDLA_WP_DIR . '/inc/cmsp-placeholder.php';
 
 /**
+ * Ensure Home (page ID 10) is the static front page once.
+ */
+function nydla_wp_ensure_front_page() {
+	$home_id = (int) get_option( 'page_on_front' );
+	$mode    = get_option( 'show_on_front' );
+	if ( 'page' === $mode && $home_id > 0 ) {
+		return;
+	}
+	$home = get_page_by_path( 'home' );
+	if ( ! $home ) {
+		$home = get_post( 10 );
+	}
+	if ( ! $home || 'page' !== $home->post_type ) {
+		return;
+	}
+	update_option( 'show_on_front', 'page' );
+	update_option( 'page_on_front', (int) $home->ID );
+}
+add_action( 'init', 'nydla_wp_ensure_front_page', 20 );
+
+/**
  * NYDLA brand logo URL (bundled theme asset).
  *
  * @return string
