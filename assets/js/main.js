@@ -1,5 +1,5 @@
 /**
- * NYDLA WordPress — chrome + home carousel.
+ * NYDLA WordPress — chrome, home carousel, podcast filters.
  */
 (function () {
 	'use strict';
@@ -32,98 +32,172 @@
 	}
 
 	/* Home hero carousel */
-	var root = document.querySelector('[data-nydla-carousel]');
-	if (!root) {
-		return;
-	}
-
-	var track = root.querySelector('[data-nydla-carousel-track]');
-	var slides = root.querySelectorAll('[data-nydla-carousel-slide]');
-	var dotsWrap = root.querySelector('[data-nydla-carousel-dots]');
-	var prevBtn = root.querySelector('[data-nydla-carousel-prev]');
-	var nextBtn = root.querySelector('[data-nydla-carousel-next]');
-	var total = slides.length;
-	var index = 0;
-	var timer = null;
-	var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-	if (!track || total < 2) {
-		return;
-	}
-
-	function goTo(i) {
-		index = (i + total) % total;
-		track.style.transform = 'translateX(' + index * -100 + '%)';
-		if (dotsWrap) {
-			dotsWrap.querySelectorAll('[data-nydla-carousel-dot]').forEach(function (dot, di) {
-				dot.classList.toggle('is-active', di === index);
-				dot.setAttribute('aria-selected', di === index ? 'true' : 'false');
-			});
-		}
-		slides.forEach(function (slide, si) {
-			slide.setAttribute('aria-hidden', si === index ? 'false' : 'true');
-		});
-	}
-
-	function next() {
-		goTo(index + 1);
-	}
-
-	function prev() {
-		goTo(index - 1);
-	}
-
-	function start() {
-		if (reduceMotion) {
+	(function initCarousel() {
+		var root = document.querySelector('[data-nydla-carousel]');
+		if (!root || root.getAttribute('data-nydla-carousel-ready') === '1') {
 			return;
 		}
-		stop();
-		timer = window.setInterval(next, 6500);
-	}
+		root.setAttribute('data-nydla-carousel-ready', '1');
 
-	function stop() {
-		if (timer) {
-			window.clearInterval(timer);
-			timer = null;
+		var track = root.querySelector('[data-nydla-carousel-track]');
+		var slides = root.querySelectorAll('[data-nydla-carousel-slide]');
+		var dotsWrap = root.querySelector('[data-nydla-carousel-dots]');
+		var prevBtn = root.querySelector('[data-nydla-carousel-prev]');
+		var nextBtn = root.querySelector('[data-nydla-carousel-next]');
+		var total = slides.length;
+		var index = 0;
+		var timer = null;
+		var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+		if (!track || total < 2) {
+			return;
 		}
-	}
 
-	if (dotsWrap) {
-		for (var d = 0; d < total; d++) {
-			var btn = document.createElement('button');
-			btn.type = 'button';
-			btn.className = 'nydla-carousel__dot' + (d === 0 ? ' is-active' : '');
-			btn.setAttribute('data-nydla-carousel-dot', '');
-			btn.setAttribute('aria-label', 'Go to slide ' + (d + 1));
-			btn.setAttribute('aria-selected', d === 0 ? 'true' : 'false');
-			(function (di) {
-				btn.addEventListener('click', function () {
-					goTo(di);
-					start();
+		if (dotsWrap) {
+			dotsWrap.innerHTML = '';
+		}
+
+		function goTo(i) {
+			index = (i + total) % total;
+			track.style.transform = 'translateX(' + index * -100 + '%)';
+			if (dotsWrap) {
+				dotsWrap.querySelectorAll('[data-nydla-carousel-dot]').forEach(function (dot, di) {
+					dot.classList.toggle('is-active', di === index);
+					dot.setAttribute('aria-selected', di === index ? 'true' : 'false');
 				});
-			})(d);
-			dotsWrap.appendChild(btn);
+			}
+			slides.forEach(function (slide, si) {
+				slide.setAttribute('aria-hidden', si === index ? 'false' : 'true');
+			});
 		}
-	}
 
-	if (prevBtn) {
-		prevBtn.addEventListener('click', function () {
-			prev();
-			start();
+		function next() {
+			goTo(index + 1);
+		}
+
+		function prev() {
+			goTo(index - 1);
+		}
+
+		function start() {
+			if (reduceMotion) {
+				return;
+			}
+			stop();
+			timer = window.setInterval(next, 6500);
+		}
+
+		function stop() {
+			if (timer) {
+				window.clearInterval(timer);
+				timer = null;
+			}
+		}
+
+		if (dotsWrap) {
+			for (var d = 0; d < total; d++) {
+				var btn = document.createElement('button');
+				btn.type = 'button';
+				btn.className = 'nydla-carousel__dot' + (d === 0 ? ' is-active' : '');
+				btn.setAttribute('data-nydla-carousel-dot', '');
+				btn.setAttribute('aria-label', 'Go to slide ' + (d + 1));
+				btn.setAttribute('aria-selected', d === 0 ? 'true' : 'false');
+				(function (di) {
+					btn.addEventListener('click', function () {
+						goTo(di);
+						start();
+					});
+				})(d);
+				dotsWrap.appendChild(btn);
+			}
+		}
+
+		if (prevBtn) {
+			prevBtn.addEventListener('click', function () {
+				prev();
+				start();
+			});
+		}
+		if (nextBtn) {
+			nextBtn.addEventListener('click', function () {
+				next();
+				start();
+			});
+		}
+
+		root.addEventListener('mouseenter', stop);
+		root.addEventListener('mouseleave', start);
+		root.addEventListener('focusin', stop);
+		root.addEventListener('focusout', start);
+
+		goTo(0);
+		start();
+	})();
+
+	/* Podcasts page — category chips + ?cat= stub */
+	(function initPodcastFilters() {
+		var filterRoot = document.querySelector('[data-nydla-podcast-filters]');
+		var tiles = document.querySelectorAll('[data-nydla-podcast-tile]');
+		var empty = document.querySelector('[data-nydla-podcast-empty]');
+		if (!filterRoot || !tiles.length) {
+			return;
+		}
+
+		var chips = filterRoot.querySelectorAll('[data-nydla-podcast-cat]');
+
+		function normalizeCat(value) {
+			return (value || '').toString().trim().toLowerCase().replace(/_/g, '-');
+		}
+
+		function applyCat(cat) {
+			var active = normalizeCat(cat);
+			var visible = 0;
+
+			chips.forEach(function (chip) {
+				var chipCat = normalizeCat(chip.getAttribute('data-nydla-podcast-cat'));
+				var isActive = chipCat === active;
+				chip.classList.toggle('is-active', isActive);
+				chip.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+			});
+
+			tiles.forEach(function (tile) {
+				var tileCat = normalizeCat(tile.getAttribute('data-cat'));
+				var show = !active || tileCat === active;
+				tile.hidden = !show;
+				if (show) {
+					visible += 1;
+				}
+			});
+
+			if (empty) {
+				empty.classList.toggle('is-visible', visible === 0);
+			}
+
+			try {
+				var url = new URL(window.location.href);
+				if (active) {
+					url.searchParams.set('cat', active);
+				} else {
+					url.searchParams.delete('cat');
+				}
+				window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+			} catch (err) {
+				/* ignore */
+			}
+		}
+
+		chips.forEach(function (chip) {
+			chip.addEventListener('click', function () {
+				applyCat(chip.getAttribute('data-nydla-podcast-cat') || '');
+			});
 		});
-	}
-	if (nextBtn) {
-		nextBtn.addEventListener('click', function () {
-			next();
-			start();
-		});
-	}
 
-	root.addEventListener('mouseenter', stop);
-	root.addEventListener('mouseleave', start);
-	root.addEventListener('focusin', stop);
-	root.addEventListener('focusout', start);
-
-	goTo(0);
-	start();
+		var initial = '';
+		try {
+			initial = normalizeCat(new URL(window.location.href).searchParams.get('cat'));
+		} catch (err) {
+			initial = '';
+		}
+		applyCat(initial);
+	})();
 })();
