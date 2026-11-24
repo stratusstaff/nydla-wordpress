@@ -41,28 +41,29 @@ function nydla_wp_partner_slide_count() {
  * @return array<int, array<string, string>>
  */
 function nydla_wp_partner_slide_defaults() {
-	$skyline = trailingslashit( NYDLA_WP_URI ) . 'assets/images/skyline-hero.svg';
+	// Ann Radoc pick: aerial Hudson Yards & Lower Manhattan — main hero banner.
+	$hero = trailingslashit( NYDLA_WP_URI ) . 'assets/images/home/hero-hudson-yards.jpg';
 	$defaults = array(
 		1 => array(
 			'title'     => 'GoTo',
 			'text'      => 'Seamless modern meetings for teams that teach, train, and lead across time zones.',
 			'cta_label' => 'Learn more',
 			'cta_url'   => '#',
-			'image'     => $skyline,
+			'image'     => $hero,
 		),
 		2 => array(
 			'title'     => 'Featured partner',
 			'text'      => 'Add a second Page-1 partner story in Appearance → Customize → Page-1 Partners.',
 			'cta_label' => 'Learn more',
 			'cta_url'   => '#',
-			'image'     => $skyline,
+			'image'     => $hero,
 		),
 		3 => array(
 			'title'     => 'Featured partner',
 			'text'      => 'Add a third Page-1 partner story in Appearance → Customize → Page-1 Partners.',
 			'cta_label' => 'Learn more',
 			'cta_url'   => '#',
-			'image'     => $skyline,
+			'image'     => $hero,
 		),
 	);
 
@@ -76,7 +77,7 @@ function nydla_wp_partner_slide_defaults() {
 			'text'      => __( 'Add this partner story in Appearance → Customize → Page-1 Partners.', 'nydla-wordpress' ),
 			'cta_label' => __( 'Learn more', 'nydla-wordpress' ),
 			'cta_url'   => '#',
-			'image'     => $skyline,
+			'image'     => $hero,
 		);
 	}
 
@@ -283,12 +284,17 @@ function nydla_wp_get_partner_slides() {
 		if ( '' === $title ) {
 			continue;
 		}
+		$image = (string) get_theme_mod( "nydla_partner_{$i}_image", $def['image'] );
+		// Soft-migrate old SVG placeholder to Ann’s aerial hero pick.
+		if ( '' === $image || false !== strpos( $image, 'skyline-hero.svg' ) ) {
+			$image = $def['image'];
+		}
 		$slides[] = array(
 			'title'     => $title,
 			'text'      => (string) get_theme_mod( "nydla_partner_{$i}_text", $def['text'] ),
 			'cta_label' => (string) get_theme_mod( "nydla_partner_{$i}_cta_label", $def['cta_label'] ),
 			'cta_url'   => (string) get_theme_mod( "nydla_partner_{$i}_cta_url", $def['cta_url'] ),
-			'image'     => (string) get_theme_mod( "nydla_partner_{$i}_image", $def['image'] ),
+			'image'     => $image,
 		);
 	}
 

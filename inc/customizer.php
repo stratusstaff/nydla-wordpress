@@ -446,6 +446,16 @@ function nydla_wp_rest_theme_mod_keys() {
 		'nydla_show_giving',
 		'nydla_show_social',
 		'nydla_partner_slide_count',
+		'nydla_partner_1_image',
+		'nydla_partner_2_image',
+		'nydla_partner_3_image',
+		'nydla_partner_4_image',
+		'nydla_partner_5_image',
+		'nydla_partner_6_image',
+		'nydla_partner_7_image',
+		'nydla_partner_8_image',
+		'nydla_partner_9_image',
+		'nydla_partner_10_image',
 	);
 }
 
