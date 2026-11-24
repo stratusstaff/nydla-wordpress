@@ -378,3 +378,112 @@ function nydla_wp_customizer_css() {
 	echo '<style id="nydla-customizer-css">' . $css . '</style>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 add_action( 'wp_head', 'nydla_wp_customizer_css', 60 );
+
+/**
+ * REST: read/update theme mods (editors with edit_theme_options).
+ */
+function nydla_wp_register_theme_mods_rest() {
+	register_rest_route(
+		'nydla/v1',
+		'/theme-mods',
+		array(
+			array(
+				'methods'             => WP_REST_Server::READABLE,
+				'callback'            => 'nydla_wp_rest_get_theme_mods',
+				'permission_callback' => static function () {
+					return current_user_can( 'edit_theme_options' );
+				},
+			),
+			array(
+				'methods'             => WP_REST_Server::CREATABLE,
+				'callback'            => 'nydla_wp_rest_set_theme_mods',
+				'permission_callback' => static function () {
+					return current_user_can( 'edit_theme_options' );
+				},
+			),
+		)
+	);
+}
+add_action( 'rest_api_init', 'nydla_wp_register_theme_mods_rest' );
+
+/**
+ * Allowed theme-mod keys for REST updates.
+ *
+ * @return string[]
+ */
+function nydla_wp_rest_theme_mod_keys() {
+	return array(
+		'nydla_logo_max_height',
+		'nydla_logo_max_width',
+		'nydla_logo_align',
+		'nydla_logo_area_pad_y',
+		'nydla_logo_area_bg',
+		'nydla_show_brand_rule',
+		'nydla_header_bg',
+		'nydla_nav_link',
+		'nydla_nav_link_hover',
+		'nydla_nav_underline',
+		'nydla_header_border',
+		'nydla_header_sticky',
+		'nydla_color_ink',
+		'nydla_color_navy',
+		'nydla_color_steel',
+		'nydla_color_amber',
+		'nydla_color_mist',
+		'nydla_color_paper',
+		'nydla_color_white',
+		'nydla_page_bg',
+		'nydla_footer_bg',
+		'nydla_footer_accent',
+		'nydla_giving_label',
+		'nydla_giving_1_label',
+		'nydla_giving_1_url',
+		'nydla_giving_2_label',
+		'nydla_giving_2_url',
+		'nydla_social_label',
+		'nydla_social_url',
+		'nydla_footer_copy',
+		'nydla_show_giving',
+		'nydla_show_social',
+	);
+}
+
+/**
+ * GET theme mods.
+ *
+ * @return WP_REST_Response
+ */
+function nydla_wp_rest_get_theme_mods() {
+	$out = array();
+	foreach ( nydla_wp_rest_theme_mod_keys() as $key ) {
+		$out[ $key ] = get_theme_mod( $key );
+	}
+	return rest_ensure_response( $out );
+}
+
+/**
+ * POST theme mods: JSON object of key => value.
+ *
+ * @param WP_REST_Request $request Request.
+ * @return WP_REST_Response
+ */
+function nydla_wp_rest_set_theme_mods( WP_REST_Request $request ) {
+	$params = $request->get_json_params();
+	if ( ! is_array( $params ) ) {
+		return new WP_REST_Response( array( 'error' => 'Expected JSON object' ), 400 );
+	}
+	$allowed = array_flip( nydla_wp_rest_theme_mod_keys() );
+	$updated = array();
+	foreach ( $params as $key => $value ) {
+		if ( ! isset( $allowed[ $key ] ) ) {
+			continue;
+		}
+		set_theme_mod( $key, $value );
+		$updated[ $key ] = get_theme_mod( $key );
+	}
+	return rest_ensure_response(
+		array(
+			'updated' => $updated,
+		)
+	);
+}
