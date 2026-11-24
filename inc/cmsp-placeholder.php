@@ -1,9 +1,6 @@
 <?php
 /**
- * Placeholder shortcode for future NYDLA content-management plugin (sponsors / events / podcasts).
- *
- * Usage: [NYDLA-CMSP type="sponsors"] | events | podcasts
- * Not used for the Home Page-1 partner carousel (that is theme Customizer).
+ * Fallback shortcode when NYDLA CMSP plugin is not active.
  *
  * @package Nydla_Wordpress
  */
@@ -13,7 +10,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Render a visible placeholder until the CMSP plugin ships.
+ * Register theme placeholder only if the plugin did not claim [NYDLA-CMSP].
+ */
+function nydla_wp_register_cmsp_placeholder() {
+	if ( defined( 'NYDLA_CMSP_VERSION' ) || shortcode_exists( 'NYDLA-CMSP' ) ) {
+		return;
+	}
+	add_shortcode( 'NYDLA-CMSP', 'nydla_wp_cmsp_placeholder_shortcode' );
+}
+add_action( 'init', 'nydla_wp_register_cmsp_placeholder', 20 );
+
+/**
+ * Visible placeholder until the CMSP plugin ships.
  *
  * @param array|string $atts Shortcode attributes.
  * @return string
@@ -53,13 +61,12 @@ function nydla_wp_cmsp_placeholder_shortcode( $atts ) {
 					<li class="nydla-cmsp-placeholder__slot"><?php esc_html_e( 'Logo', 'nydla-wordpress' ); ?></li>
 				<?php endfor; ?>
 			</ul>
-			<p class="nydla-cmsp-placeholder__hint"><?php esc_html_e( 'Sponsor logos will appear here when the NYDLA CMSP plugin is live. Shortcode: [NYDLA-CMSP type="sponsors"]', 'nydla-wordpress' ); ?></p>
+			<p class="nydla-cmsp-placeholder__hint"><?php esc_html_e( 'Activate the NYDLA CMSP plugin to manage real sponsor logos here.', 'nydla-wordpress' ); ?></p>
 		<?php else : ?>
 			<p class="nydla-cmsp-placeholder__code">[NYDLA-CMSP type="<?php echo esc_attr( $type ); ?>"]</p>
-			<p class="nydla-cmsp-placeholder__hint"><?php esc_html_e( 'Placeholder for the NYDLA content-management plugin.', 'nydla-wordpress' ); ?></p>
+			<p class="nydla-cmsp-placeholder__hint"><?php esc_html_e( 'Activate the NYDLA CMSP plugin to manage this gallery.', 'nydla-wordpress' ); ?></p>
 		<?php endif; ?>
 	</div>
 	<?php
 	return (string) ob_get_clean();
 }
-add_shortcode( 'NYDLA-CMSP', 'nydla_wp_cmsp_placeholder_shortcode' );
