@@ -44,7 +44,6 @@ if ( empty( $slides ) ) {
 						</div>
 					<?php endif; ?>
 					<div class="nydla-carousel__copy">
-						<p class="nydla-eyebrow"><?php esc_html_e( 'Featured on NYDLA', 'nydla-wordpress' ); ?></p>
 						<h2 class="nydla-carousel__brand"><?php echo esc_html( $slide['title'] ); ?></h2>
 						<?php if ( $slide['text'] ) : ?>
 							<p class="nydla-carousel__text"><?php echo esc_html( $slide['text'] ); ?></p>
