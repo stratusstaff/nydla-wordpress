@@ -36,6 +36,7 @@
 
 html {
 	scroll-behavior: smooth;
+	background-color: var(--nydla-navy);
 }
 
 body {
@@ -48,6 +49,8 @@ body {
 		radial-gradient(120% 80% at 50% -10%, rgba(107, 140, 174, 0.18), transparent 55%),
 		linear-gradient(180deg, var(--nydla-mist) 0%, var(--nydla-paper) 28%, var(--nydla-paper) 100%);
 	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 img {
@@ -167,13 +170,20 @@ p {
 
 /* Layout */
 .site-main {
-	min-height: 50vh;
+	flex: 1 0 auto;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
 }
 
 .content-area {
 	max-width: var(--nydla-wide);
 	margin-inline: auto;
-	padding: var(--nydla-space-lg) var(--nydla-space-md);
+	padding: var(--nydla-space-lg) var(--nydla-space-md) 0;
+}
+
+.site-main > :last-child {
+	margin-bottom: 0;
 }
 
 .entry-content > *:first-child {
@@ -189,19 +199,27 @@ p {
 	position: sticky;
 	top: 0;
 	z-index: 1000;
-	background: rgba(255, 255, 255, 0.92);
-	backdrop-filter: blur(14px);
-	-webkit-backdrop-filter: blur(14px);
-	border-bottom: 1px solid rgba(19, 35, 58, 0.08);
-	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+	background: #fff;
+	border-bottom: 1px solid rgba(58, 79, 106, 0.12);
+	box-shadow: none;
 }
 
 .site-header__brand {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 1.35rem var(--nydla-space-md) 1.1rem;
-	background: #0b1220;
+	padding: 1.15rem var(--nydla-space-md) 0.55rem;
+	background: #fff;
+	line-height: 0;
+	border: 0;
+	overflow: hidden;
+}
+
+.site-header__rule {
+	width: 3.25rem;
+	height: 2px;
+	background: var(--nydla-amber);
+	margin: 0 auto 0.45rem;
 }
 
 .site-logo {
@@ -219,22 +237,25 @@ p {
 
 .site-logo img {
 	display: block;
-	width: min(36rem, 92vw);
+	width: min(22rem, 80vw);
 	height: auto;
-	max-height: 5.5rem;
+	max-height: 3.85rem;
 	object-fit: contain;
 }
 
 .site-header__nav-row {
-	background: var(--nydla-navy);
+	background: #fff;
 	position: relative;
+	z-index: 1;
+	border: 0;
+	box-shadow: none;
 }
 
 .site-header__nav-inner {
 	max-width: var(--nydla-wide);
 	margin-inline: auto;
-	padding: 0 var(--nydla-space-md);
-	min-height: 3rem;
+	padding: 0 var(--nydla-space-md) 0.75rem;
+	min-height: 2.5rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -245,7 +266,7 @@ p {
 	display: none;
 	appearance: none;
 	background: transparent;
-	border: 1px solid rgba(255, 255, 255, 0.28);
+	border: 1px solid rgba(58, 79, 106, 0.28);
 	border-radius: 2px;
 	width: 2.6rem;
 	height: 2.6rem;
@@ -262,7 +283,7 @@ p {
 	display: block;
 	width: 1.1rem;
 	height: 2px;
-	background: #fff;
+	background: var(--nydla-navy);
 	transition: transform 0.25s var(--nydla-ease), opacity 0.2s;
 }
 
@@ -296,28 +317,28 @@ p {
 .site-nav__list > li > a {
 	display: inline-flex;
 	align-items: center;
-	font-size: 0.8125rem;
+	font-size: 0.78rem;
 	font-weight: 650;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 	text-decoration: none;
-	color: rgba(255, 255, 255, 0.82);
-	padding: 0.85rem 0.95rem;
+	color: var(--nydla-navy);
+	padding: 0.55rem 0.9rem;
 	border-bottom: 2px solid transparent;
 	transition: color 0.2s var(--nydla-ease), border-color 0.2s var(--nydla-ease), background 0.2s var(--nydla-ease);
 }
 
 .site-nav__list > li > a:hover,
 .site-nav__list > li > a:focus-visible {
-	color: #fff;
-	border-bottom-color: var(--nydla-brand-orange);
-	background: rgba(255, 255, 255, 0.04);
+	color: var(--nydla-ink);
+	border-bottom-color: var(--nydla-amber);
+	background: transparent;
 }
 
 .site-nav__list .current-menu-item > a,
 .site-nav__list .current_page_item > a {
-	color: #fff;
-	border-bottom-color: var(--nydla-green);
+	color: var(--nydla-ink);
+	border-bottom-color: var(--nydla-amber);
 }
 
 .site-nav__list .sub-menu {
@@ -348,10 +369,11 @@ p {
 		left: 0;
 		right: 0;
 		top: 100%;
-		background: var(--nydla-ink);
+		background: #fff;
 		padding: 0.35rem 0 0.75rem;
 		display: none;
-		box-shadow: 0 18px 40px rgba(11, 18, 32, 0.28);
+		box-shadow: 0 18px 40px rgba(11, 18, 32, 0.12);
+		border-top: 1px solid rgba(58, 79, 106, 0.12);
 	}
 
 	.site-nav.is-open {
@@ -367,7 +389,7 @@ p {
 	.site-nav__list > li > a {
 		display: block;
 		padding: 0.95rem 1.35rem;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+		border-bottom: 1px solid rgba(58, 79, 106, 0.1);
 		letter-spacing: 0.06em;
 	}
 
@@ -375,23 +397,23 @@ p {
 	.site-nav__list > li > a:focus-visible,
 	.site-nav__list .current-menu-item > a,
 	.site-nav__list .current_page_item > a {
-		border-bottom-color: rgba(255, 255, 255, 0.08);
-		border-left: 3px solid var(--nydla-brand-orange);
+		border-bottom-color: rgba(58, 79, 106, 0.1);
+		border-left: 3px solid var(--nydla-amber);
 		padding-left: calc(1.35rem - 3px);
 	}
 }
 
-/* ——— Footer ——— */
+/* ——— Footer (curated) ——— */
 .site-footer {
-	margin-top: var(--nydla-space-xxl);
-	background:
-		linear-gradient(180deg, transparent 0%, rgba(19, 35, 58, 0.04) 12%),
-		var(--nydla-navy);
+	flex-shrink: 0;
+	margin-top: 0;
+	background: linear-gradient(180deg, #0f1c2e 0%, var(--nydla-navy) 40%);
 	color: rgba(255, 255, 255, 0.82);
 }
 
 .site-footer a {
-	color: rgba(255, 255, 255, 0.88);
+	color: rgba(255, 255, 255, 0.82);
+	text-decoration: none;
 }
 
 .site-footer a:hover,
@@ -399,69 +421,361 @@ p {
 	color: var(--nydla-amber);
 }
 
-.site-footer__inner {
+.site-footer__top {
 	max-width: var(--nydla-wide);
 	margin-inline: auto;
-	padding: var(--nydla-space-xl) var(--nydla-space-md) var(--nydla-space-lg);
+	padding: 4.5rem 1.75rem 3.25rem;
 	display: grid;
 	grid-template-columns: 1.4fr 1fr 1fr;
-	gap: var(--nydla-space-lg);
+	gap: 3rem 4rem;
 }
 
 .site-footer__name {
 	font-family: var(--nydla-font-display);
-	font-size: 1.35rem;
+	font-size: 1.65rem;
 	font-weight: 600;
 	color: var(--nydla-white);
-	margin: 0 0 0.35em;
+	margin: 0 0 0.4rem;
 }
 
 .site-footer__tagline {
-	margin: 0;
-	color: rgba(255, 255, 255, 0.65);
-	font-size: 0.9375rem;
-	max-width: 22rem;
+	margin: 0 0 1.5rem;
+	color: rgba(255, 255, 255, 0.62);
+	font-size: 0.95rem;
+	max-width: 16rem;
+	line-height: 1.45;
 }
 
-.site-footer__list {
+.site-footer__email {
+	margin: 1.25rem 0 0;
+	font-size: 0.95rem;
+}
+
+.site-footer__email a {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.site-footer__col h3 {
+	margin: 0 0 1.15rem;
+	font-size: 0.72rem;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.45);
+	font-weight: 700;
+	font-family: var(--nydla-font-sans);
+}
+
+.site-footer__col ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 	display: flex;
 	flex-direction: column;
-	gap: 0.55rem;
+	gap: 0.7rem;
 }
 
-.site-footer__list a {
-	text-decoration: none;
+.site-footer__col a {
+	font-size: 1rem;
 	font-weight: 500;
-	font-size: 0.9375rem;
 }
 
-.site-footer__cta-label {
-	font-size: 0.8125rem;
+.site-footer__charity {
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	padding: 1.35rem 1.75rem;
+}
+
+.site-footer__charity-inner {
+	max-width: var(--nydla-wide);
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.85rem 1.75rem;
+	align-items: center;
+	font-size: 0.9rem;
+	color: rgba(255, 255, 255, 0.62);
+}
+
+.site-footer__giving-label {
+	font-size: 0.7rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
 	text-transform: uppercase;
-	letter-spacing: 0.08em;
-	color: rgba(255, 255, 255, 0.55);
-	margin: 0 0 0.75rem;
+	color: rgba(255, 255, 255, 0.4);
+}
+
+.site-footer__social {
+	margin-left: auto;
 }
 
 .site-footer__meta {
-	border-top: 1px solid rgba(255, 255, 255, 0.1);
-	padding: var(--nydla-space-md);
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+	padding: 1rem 1.75rem 1.25rem;
 	text-align: center;
-	font-size: 0.8125rem;
-	color: rgba(255, 255, 255, 0.5);
+	font-size: 0.8rem;
+	color: rgba(255, 255, 255, 0.45);
 }
 
 .site-footer__meta p {
 	margin: 0;
 }
 
-@media (max-width: 760px) {
-	.site-footer__inner {
+@media (max-width: 800px) {
+	.site-footer__top {
 		grid-template-columns: 1fr;
-		gap: var(--nydla-space-md);
+		gap: 2.5rem;
+		padding-top: 3.5rem;
+	}
+
+	.site-footer__social {
+		margin-left: 0;
+	}
+}
+
+/* CMSP placeholder */
+.nydla-cmsp-placeholder {
+	border: 1px dashed rgba(201, 133, 42, 0.55);
+	background: linear-gradient(160deg, rgba(19, 35, 58, 0.06), rgba(201, 133, 42, 0.08));
+	padding: 2.5rem 1.75rem;
+	text-align: center;
+	margin: 0;
+}
+
+.nydla-cmsp-placeholder__code {
+	font-family: ui-monospace, Consolas, monospace;
+	font-size: 0.95rem;
+	font-weight: 700;
+	color: var(--nydla-navy);
+	margin: 0 0 0.65rem;
+}
+
+.nydla-cmsp-placeholder__label {
+	font-family: var(--nydla-font-display);
+	font-size: 1.35rem;
+	margin: 0 0 0.5rem;
+	color: var(--nydla-ink);
+}
+
+.nydla-cmsp-placeholder__hint {
+	margin: 0;
+	color: var(--nydla-steel);
+	font-size: 0.9rem;
+	max-width: 28rem;
+	margin-inline: auto;
+}
+
+/* Shared page shells used by design-plan content */
+.nydla-page-hero {
+	position: relative;
+	overflow: hidden;
+	background: var(--nydla-ink);
+	color: #fff;
+	padding: 4.5rem 0 3.5rem;
+}
+
+.nydla-page-hero__bg {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0.35;
+}
+
+.nydla-page-hero__inner {
+	position: relative;
+	z-index: 1;
+	max-width: var(--nydla-wide);
+	margin-inline: auto;
+	padding-inline: 1.5rem;
+}
+
+.nydla-page-hero h1 {
+	color: #fff;
+	font-size: clamp(2.4rem, 5vw, 3.75rem);
+	margin: 0 0 0.35em;
+}
+
+.nydla-page-hero p {
+	max-width: 34rem;
+	margin: 0;
+	color: rgba(255, 255, 255, 0.9);
+}
+
+.nydla-page-hero .nydla-eyebrow {
+	color: rgba(255, 255, 255, 0.65);
+}
+
+.page .entry-header,
+.page-template-default .entry-header {
+	display: none;
+}
+
+.page .content-area,
+.page .entry-content {
+	max-width: none;
+	padding: 0;
+	margin: 0;
+}
+
+.nydla-band {
+	padding: 5.5rem 0;
+}
+
+.nydla-band--mist {
+	background: linear-gradient(180deg, var(--nydla-mist), var(--nydla-paper));
+}
+
+.nydla-band--white {
+	background: #fff;
+}
+
+.nydla-band--navy {
+	background: var(--nydla-navy);
+	color: rgba(255, 255, 255, 0.88);
+}
+
+.nydla-band--navy h2,
+.nydla-band--navy .nydla-proof {
+	color: #fff;
+}
+
+.nydla-band--navy .nydla-lead {
+	color: rgba(255, 255, 255, 0.75);
+}
+
+.nydla-band--navy .nydla-eyebrow {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.nydla-band__inner {
+	max-width: var(--nydla-wide);
+	margin-inline: auto;
+	padding-inline: 1.5rem;
+}
+
+.nydla-eyebrow {
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--nydla-steel);
+	margin: 0 0 0.75rem;
+}
+
+.nydla-lead {
+	font-size: 1.15rem;
+	color: var(--nydla-steel);
+	max-width: 40rem;
+	line-height: 1.65;
+}
+
+.nydla-proof {
+	font-family: var(--nydla-font-display);
+	font-size: clamp(3rem, 8vw, 5rem);
+	color: var(--nydla-amber);
+	margin: 0;
+	line-height: 1;
+}
+
+.nydla-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin: 1rem 0 1.5rem;
+}
+
+.nydla-chip {
+	padding: 0.5rem 0.9rem;
+	border: 1px solid rgba(58, 79, 106, 0.25);
+	background: #fff;
+	font-size: 0.78rem;
+	font-weight: 650;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: var(--nydla-navy);
+}
+
+.nydla-chip.is-on {
+	background: var(--nydla-ink);
+	color: #fff;
+	border-color: var(--nydla-ink);
+}
+
+.nydla-logo-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1rem;
+	margin-top: 2rem;
+}
+
+.nydla-logo-slot {
+	min-height: 5.5rem;
+	display: grid;
+	place-items: center;
+	border: 1px solid rgba(58, 79, 106, 0.16);
+	background: #fff;
+	color: var(--nydla-steel);
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.nydla-band--navy .nydla-logo-slot {
+	background: rgba(255, 255, 255, 0.06);
+	border-color: rgba(255, 255, 255, 0.18);
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.nydla-contact-split {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	min-height: 28rem;
+}
+
+.nydla-contact-split__story {
+	background: var(--nydla-ink);
+	color: #fff;
+	padding: 3.5rem 2.5rem;
+}
+
+.nydla-contact-split__story h1 {
+	color: #fff;
+	font-size: clamp(2rem, 4vw, 3rem);
+	margin: 0 0 0.5em;
+}
+
+.nydla-contact-split__form {
+	background: #fff;
+	padding: 3.5rem 2.5rem;
+}
+
+.nydla-field {
+	margin-bottom: 1rem;
+}
+
+.nydla-field label {
+	display: block;
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	margin-bottom: 0.35rem;
+	color: var(--nydla-steel);
+}
+
+.nydla-field input,
+.nydla-field textarea {
+	width: 100%;
+	padding: 0.7rem 0.85rem;
+	border: 1px solid rgba(58, 79, 106, 0.25);
+	font: inherit;
+}
+
+@media (max-width: 860px) {
+	.nydla-logo-grid,
+	.nydla-contact-split {
+		grid-template-columns: 1fr;
 	}
 }
 

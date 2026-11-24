@@ -29,13 +29,14 @@ $nydla_logo_alt = sprintf(
 			<img
 				src="<?php echo esc_url( $nydla_logo_url ); ?>"
 				alt="<?php echo esc_attr( $nydla_logo_alt ); ?>"
-				width="1200"
-				height="341"
+				width="1024"
+				height="290"
 				decoding="async"
 				fetchpriority="high"
 			>
 		</a>
 	</div>
+	<div class="site-header__rule" aria-hidden="true"></div>
 
 	<div class="site-header__nav-row">
 		<div class="site-header__nav-inner">
@@ -60,7 +61,7 @@ $nydla_logo_alt = sprintf(
 						'container'      => false,
 						'menu_class'     => 'site-nav__list',
 						'fallback_cb'    => 'nydla_wp_fallback_menu',
-						'depth'          => 2,
+						'depth'          => 1,
 					)
 				);
 				?>

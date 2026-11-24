@@ -1,202 +1,53 @@
 <!-- wp:html -->
-<style id="nydla-home-critical">
-.entry-header,.front-page .entry-title{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;border:0!important}.front-page .content-area,.front-page.entry-content,.front-page .entry-content{max-width:none!important;padding:0!important;margin:0!important}
-.nydla-bleed{width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
-.nydla-carousel{position:relative;isolation:isolate;color:#fff;overflow:hidden;background:#0b1220;min-height:min(88vh,46rem)}
-.nydla-carousel__track{display:flex;transition:transform .55s cubic-bezier(.22,1,.36,1)}
-.nydla-carousel__slide{position:relative;flex:0 0 100%;min-height:min(88vh,46rem);display:grid;align-items:end}
-.nydla-carousel__media{position:absolute;inset:0;z-index:0}
-.nydla-carousel__media img{width:100%;height:100%;object-fit:cover;display:block}
-.nydla-carousel__media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,18,32,.28),rgba(11,18,32,.12) 42%,rgba(11,18,32,.82))}
-.nydla-carousel__copy{position:relative;z-index:1;max-width:70rem;width:100%;margin-inline:auto;padding:6rem 1.5rem 4rem}
-.nydla-carousel__brand{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-size:clamp(2.6rem,7vw,5rem);font-weight:600;letter-spacing:-.02em;line-height:.95;margin:0 0 .35em;color:#fff}
-.nydla-carousel__text{max-width:28rem;margin:0 0 1.25rem;font-size:clamp(1.05rem,2vw,1.25rem);color:rgba(255,255,255,.9)}
-.nydla-eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#3a4f6a;margin:0 0 .75rem}
-.nydla-carousel .nydla-eyebrow{color:rgba(255,255,255,.7)}
-.nydla-btn{display:inline-flex;align-items:center;justify-content:center;padding:.75rem 1.35rem;font-weight:600;text-decoration:none;border-radius:2px;background:#13233a;color:#fff;border:1px solid transparent}
-.nydla-btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
-.nydla-btn--amber{background:#c9852a;color:#0b1220}
-.nydla-btn--amber:hover{background:#b37522;color:#0b1220}
-.nydla-carousel__controls{position:absolute;right:1.5rem;bottom:1.5rem;z-index:2;display:flex;align-items:center;gap:.5rem}
-.nydla-carousel__btn{appearance:none;border:1px solid rgba(255,255,255,.45);background:rgba(11,18,32,.35);color:#fff;width:2.5rem;height:2.5rem;border-radius:2px;cursor:pointer}
-.nydla-carousel__dots{display:flex;gap:.4rem;margin-right:.35rem}
-.nydla-carousel__dot{appearance:none;border:0;width:.55rem;height:.55rem;border-radius:50%;padding:0;background:rgba(255,255,255,.4);cursor:pointer}
-.nydla-carousel__dot.is-active{background:#c9852a}
-.nydla-home-mission{padding:6rem 1.5rem;background:linear-gradient(180deg,#e8eef5 0%,#f7f9fc 40%)}
-.nydla-home-mission__inner{max-width:70rem;margin-inline:auto}
-.nydla-home-mission__quote{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:clamp(1.55rem,3.4vw,2.35rem);line-height:1.25;max-width:40rem;margin:0 0 .65rem;color:#0b1220}
-.nydla-home-mission__attr{margin:0 0 2rem;color:#3a4f6a;font-size:.95rem}
-.nydla-home-mission__cloud{font-size:clamp(1.05rem,2vw,1.2rem);color:#3a4f6a;max-width:38rem;margin:0 0 2.5rem}
-.nydla-home-mission__welcome{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:clamp(1.45rem,3vw,2rem);margin:0 0 1rem;max-width:40rem;color:#0b1220}
-.nydla-home-mission__body{max-width:44rem;color:#3a4f6a;margin:0 0 1.25rem;font-size:1.05rem;line-height:1.65}
-.nydla-home-mission__core{max-width:40rem;font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:clamp(1.2rem,2.4vw,1.55rem);line-height:1.35;margin:0 0 2.5rem;color:#0b1220}
-.nydla-pillars__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.nydla-pillar{border-top:2px solid #c9852a;padding-top:1.15rem}
-.nydla-pillar__mark{margin:0 0 .5rem;font-size:.75rem;font-weight:700;letter-spacing:.14em;color:#c9852a}
-.nydla-pillar__title{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:1.45rem;margin:0 0 .45em;color:#0b1220}
-.nydla-pillar__text{margin:0;color:#3a4f6a;font-size:.975rem}
-.nydla-sponsors-strip{padding:4rem 0;background:#13233a;color:rgba(255,255,255,.88);overflow:hidden}
-.nydla-sponsors-strip__inner{max-width:70rem;margin-inline:auto;padding-inline:1.5rem;margin-bottom:1.5rem}
-.nydla-sponsors-strip .nydla-eyebrow{color:rgba(255,255,255,.55)}
-.nydla-sponsors-strip h2{font-family:"Iowan Old Style",Palatino,Georgia,serif;color:#fff;margin:0 0 .75rem;font-size:clamp(1.6rem,3vw,2.2rem)}
-.nydla-sponsors-strip__intro{max-width:40rem;margin:0 0 1.5rem;color:rgba(255,255,255,.78);line-height:1.6}
-.nydla-sponsors-strip__viewport{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.nydla-sponsors-strip__rail{display:flex;gap:1rem;width:max-content;animation:nydla-marquee 36s linear infinite}
-.nydla-sponsors-strip__slot{flex:0 0 auto;width:10.5rem;height:4.5rem;display:grid;place-items:center;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:rgba(255,255,255,.7);font-size:.8rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;text-decoration:none}
-.nydla-sponsors-strip__note{max-width:70rem;margin:1rem auto 0;padding-inline:1.5rem;font-size:.8rem;color:rgba(255,255,255,.45)}
-@keyframes nydla-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.nydla-cta{position:relative;isolation:isolate;color:#fff;overflow:hidden}
-.nydla-cta__media{position:absolute;inset:0;z-index:-1}
-.nydla-cta__media img{width:100%;height:100%;object-fit:cover;display:block;min-height:18rem}
-.nydla-cta__media:after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(11,18,32,.88),rgba(19,35,58,.72) 55%,rgba(19,35,58,.45))}
-.nydla-cta__inner{max-width:70rem;margin-inline:auto;padding:4rem 1.5rem}
-.nydla-cta .nydla-eyebrow{color:rgba(255,255,255,.55)}
-.nydla-cta__title{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:clamp(1.85rem,4vw,2.75rem);color:#fff;margin:0 0 .4em}
-.nydla-cta__text{max-width:32rem;margin:0 0 1.5rem;color:rgba(255,255,255,.85)}
-@media(max-width:800px){.nydla-pillars__grid{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){.nydla-sponsors-strip__rail{animation:none;flex-wrap:wrap;width:auto}.nydla-carousel__track{transition:none}}
-</style>
+<section class="nydla-band nydla-band--mist" style="padding-top:0;padding-bottom:0">
+<!-- /wp:html -->
 
-<section class="nydla-bleed nydla-carousel" data-nydla-carousel aria-roledescription="carousel" aria-label="NYDLA highlights">
-  <div class="nydla-carousel__track" data-nydla-carousel-track>
-    <article class="nydla-carousel__slide" data-nydla-carousel-slide aria-hidden="false">
-      <div class="nydla-carousel__media">
-        <img src="/wp-content/themes/nydla-wordpress/assets/images/skyline-hero.svg" alt="" width="1920" height="800" decoding="async">
-      </div>
-      <div class="nydla-carousel__copy">
-        <p class="nydla-eyebrow">Page 1 of NYDLA</p>
-        <h2 class="nydla-carousel__brand">NYDLA</h2>
-        <p class="nydla-carousel__text">New York Distance Learning Association — living, learning, and working in the global cloud economy.</p>
-        <p><a class="nydla-btn nydla-btn--amber" href="#mission">Our mission</a></p>
-      </div>
-    </article>
-    <article class="nydla-carousel__slide" data-nydla-carousel-slide aria-hidden="true">
-      <div class="nydla-carousel__media">
-        <img src="/wp-content/themes/nydla-wordpress/assets/images/skyline-band.svg" alt="" width="1600" height="480" decoding="async">
-      </div>
-      <div class="nydla-carousel__copy">
-        <p class="nydla-eyebrow">NYDLA · NADLA</p>
-        <h2 class="nydla-carousel__brand">579M+</h2>
-        <p class="nydla-carousel__text">Serving people across New York and North America through digital, distance, and e-learning.</p>
-        <p><a class="nydla-btn nydla-btn--ghost" href="#sponsors">Our sponsors</a></p>
-      </div>
-    </article>
-    <article class="nydla-carousel__slide" data-nydla-carousel-slide aria-hidden="true">
-      <div class="nydla-carousel__media">
-        <img src="/wp-content/themes/nydla-wordpress/assets/images/skyline-hero.svg" alt="" width="1920" height="800" decoding="async">
-      </div>
-      <div class="nydla-carousel__copy">
-        <p class="nydla-eyebrow">The three pillars</p>
-        <h2 class="nydla-carousel__brand">Knowledge · Technology · Talent</h2>
-        <p class="nydla-carousel__text">The fusion at the core of our community — in every time zone.</p>
-        <p><a class="nydla-btn nydla-btn--amber" href="/sponsorship-plans/">Sponsorship plans</a></p>
-      </div>
-    </article>
-  </div>
-  <div class="nydla-carousel__controls">
-    <div class="nydla-carousel__dots" data-nydla-carousel-dots role="tablist" aria-label="Carousel slides"></div>
-    <button type="button" class="nydla-carousel__btn" data-nydla-carousel-prev aria-label="Previous slide">‹</button>
-    <button type="button" class="nydla-carousel__btn" data-nydla-carousel-next aria-label="Next slide">›</button>
-  </div>
+<!-- wp:shortcode -->
+[NYDLA-CMSP type="partners"]
+<!-- /wp:shortcode -->
+
+<!-- wp:html -->
 </section>
 
-<section id="mission" class="nydla-bleed nydla-home-mission">
-  <div class="nydla-home-mission__inner">
+<section class="nydla-band nydla-band--mist" id="mission">
+  <div class="nydla-band__inner">
     <p class="nydla-eyebrow">Our mission</p>
-    <p class="nydla-home-mission__quote">We are all Living, Learning, Working, Playing, Teaching, Training, Coaching, Mentoring in the Global Cloud Economy</p>
-    <p class="nydla-home-mission__attr">— Thomas A. Capone (CEO)</p>
-    <p class="nydla-home-mission__cloud">Our services are a compilation of the most reliable cloud products and services available.</p>
-    <h2 class="nydla-home-mission__welcome">Welcome to the New York &amp; North American Distance Learning Associations serving the 579M+ people</h2>
-    <p class="nydla-home-mission__body">The NYDLA | NADLA mission: To support a global forum dedicated to the exchange of ideas and information between corporate, academic, and government professionals, concerning the issues and technological changes in the field of Digital, Distance or “e-Learning” as we evangelize how TBLS (Technology Based Learning Systems) can be utilized to improve human performance.</p>
-    <p class="nydla-home-mission__core">At its core, our community epitomizes the fusion of knowledge, technology and talent in every time zone.</p>
-    <div class="nydla-pillars__grid">
-      <div class="nydla-pillar">
-        <p class="nydla-pillar__mark">01</p>
-        <h3 class="nydla-pillar__title">Knowledge</h3>
-        <p class="nydla-pillar__text">Ideas and experience shared across corporate, academic, and government leaders.</p>
+    <p style="font-family:var(--nydla-font-display);font-size:clamp(1.55rem,3.2vw,2.25rem);max-width:38rem;margin:0 0 .85rem;line-height:1.35;color:var(--nydla-ink)">We are all Living, Learning, Working, Playing, Teaching, Training, Coaching, Mentoring in the Global Cloud Economy</p>
+    <p style="margin:0 0 2.25rem;color:var(--nydla-steel)">— Thomas A. Capone (CEO)</p>
+    <p class="nydla-lead" style="margin-bottom:2.5rem">Welcome to the New York &amp; North American Distance Learning Associations serving 579M+ people. At its core, our community epitomizes the fusion of knowledge, technology and talent in every time zone.</p>
+    <div class="nydla-pillars__grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem">
+      <div class="nydla-pillar" style="border-top:2px solid var(--nydla-amber);padding-top:1.15rem">
+        <h3 style="font-family:var(--nydla-font-display);margin:0 0 .45em">Knowledge</h3>
+        <p style="margin:0;color:var(--nydla-steel)">Ideas and experience shared across corporate, academic, and government leaders.</p>
       </div>
-      <div class="nydla-pillar">
-        <p class="nydla-pillar__mark">02</p>
-        <h3 class="nydla-pillar__title">Technology</h3>
-        <p class="nydla-pillar__text">Tools and platforms that make digital and distance learning work in the real world.</p>
+      <div class="nydla-pillar" style="border-top:2px solid var(--nydla-amber);padding-top:1.15rem">
+        <h3 style="font-family:var(--nydla-font-display);margin:0 0 .45em">Technology</h3>
+        <p style="margin:0;color:var(--nydla-steel)">Tools and platforms that make digital and distance learning work in the real world.</p>
       </div>
-      <div class="nydla-pillar">
-        <p class="nydla-pillar__mark">03</p>
-        <h3 class="nydla-pillar__title">Talent</h3>
-        <p class="nydla-pillar__text">People who teach, build, sponsor, and lead — the network that makes NYDLA move.</p>
+      <div class="nydla-pillar" style="border-top:2px solid var(--nydla-amber);padding-top:1.15rem">
+        <h3 style="font-family:var(--nydla-font-display);margin:0 0 .45em">Talent</h3>
+        <p style="margin:0;color:var(--nydla-steel)">People who teach, build, sponsor, and lead — the network that makes NYDLA move.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="sponsors" class="nydla-bleed nydla-sponsors-strip" data-nydla-sponsors-placeholder>
-  <div class="nydla-sponsors-strip__inner">
+<section class="nydla-band nydla-band--navy" id="sponsors">
+  <div class="nydla-band__inner">
     <p class="nydla-eyebrow">Vendors &amp; sponsors</p>
-    <h2>Our sponsors</h2>
-    <p class="nydla-sponsors-strip__intro">NYDLA (and now NADLA) exists due to the generosity of our most valued Vendors and Sponsors. Please click on their logos to learn more about their products and services. And, enjoy “members only” pricing!</p>
-  </div>
-  <div class="nydla-sponsors-strip__viewport" aria-label="Sponsor logos placeholder carousel">
-    <div class="nydla-sponsors-strip__rail">
-      <span class="nydla-sponsors-strip__slot">Sponsor</span>
-      <span class="nydla-sponsors-strip__slot">Sponsor</span>
-      <span class="nydla-sponsors-strip__slot">Sponsor</span>
-      <span class="nydla-sponsors-strip__slot">Sponsor</span>
-      <span class="nydla-sponsors-strip__slot">Sponsor</span>
-      <span class="nydla-sponsors-strip__slot">Sponsor</span>
-      <span class="nydla-sponsors-strip__slot">Sponsor</span>
-      <span class="nydla-sponsors-strip__slot">Sponsor</span>
-      <span class="nydla-sponsors-strip__slot">Sponsor</span>
-      <span class="nydla-sponsors-strip__slot">Sponsor</span>
-      <span class="nydla-sponsors-strip__slot">Sponsor</span>
-      <span class="nydla-sponsors-strip__slot">Sponsor</span>
-      <span class="nydla-sponsors-strip__slot">Sponsor</span>
-      <span class="nydla-sponsors-strip__slot">Sponsor</span>
-      <span class="nydla-sponsors-strip__slot">Sponsor</span>
-      <span class="nydla-sponsors-strip__slot">Sponsor</span>
+    <h2 style="margin-top:0">Our sponsors</h2>
+    <p class="nydla-lead">NYDLA (and now NADLA) exists due to the generosity of our most valued vendors and sponsors. Members enjoy SPA pricing.</p>
+    <div class="nydla-logo-grid">
+      <div class="nydla-logo-slot">Partner</div>
+      <div class="nydla-logo-slot">Partner</div>
+      <div class="nydla-logo-slot">Partner</div>
+      <div class="nydla-logo-slot">Partner</div>
     </div>
-  </div>
-  <p class="nydla-sponsors-strip__note">Logo carousel placeholder — real logos will come from a custom sponsors plugin later.</p>
-</section>
-
-<section class="nydla-bleed nydla-cta">
-  <div class="nydla-cta__media">
-    <img src="/wp-content/themes/nydla-wordpress/assets/images/skyline-band.svg" alt="" width="1600" height="480" decoding="async">
-  </div>
-  <div class="nydla-cta__inner">
-    <p class="nydla-eyebrow">Sponsorship</p>
-    <h2 class="nydla-cta__title">Learn more about our Sponsorship</h2>
-    <p class="nydla-cta__text">See sponsorship plans and how vendors partner with NYDLA.</p>
-    <p><a class="nydla-btn nydla-btn--amber" href="/sponsorship-plans/">Sponsorship Plans</a></p>
+    <p style="margin:2.25rem 0 0">
+      <a class="nydla-btn nydla-btn--amber" href="/sponsors/">See all sponsors</a>
+      <a class="nydla-btn nydla-btn--ghost" href="/sponsorship-plans/" style="margin-left:.65rem">Sponsorship Plans</a>
+    </p>
   </div>
 </section>
-
-<script>
-(function(){
-  var root=document.querySelector("[data-nydla-carousel]");
-  if(!root)return;
-  var track=root.querySelector("[data-nydla-carousel-track]");
-  var slides=root.querySelectorAll("[data-nydla-carousel-slide]");
-  var dotsWrap=root.querySelector("[data-nydla-carousel-dots]");
-  var prevBtn=root.querySelector("[data-nydla-carousel-prev]");
-  var nextBtn=root.querySelector("[data-nydla-carousel-next]");
-  var total=slides.length,index=0,timer=null;
-  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if(!track||total<2)return;
-  function goTo(i){
-    index=(i+total)%total;
-    track.style.transform="translateX("+index*-100+"%)";
-    if(dotsWrap){dotsWrap.querySelectorAll("[data-nydla-carousel-dot]").forEach(function(dot,di){dot.classList.toggle("is-active",di===index);});}
-    slides.forEach(function(slide,si){slide.setAttribute("aria-hidden",si===index?"false":"true");});
-  }
-  function next(){goTo(index+1);}
-  function prev(){goTo(index-1);}
-  function start(){if(reduce)return;stop();timer=setInterval(next,6500);}
-  function stop(){if(timer){clearInterval(timer);timer=null;}}
-  if(dotsWrap){for(var d=0;d<total;d++){(function(di){var b=document.createElement("button");b.type="button";b.className="nydla-carousel__dot"+(di===0?" is-active":"");b.setAttribute("data-nydla-carousel-dot","");b.setAttribute("aria-label","Go to slide "+(di+1));b.addEventListener("click",function(){goTo(di);start();});dotsWrap.appendChild(b);})(d);}}
-  if(prevBtn)prevBtn.addEventListener("click",function(){prev();start();});
-  if(nextBtn)nextBtn.addEventListener("click",function(){next();start();});
-  root.addEventListener("mouseenter",stop);root.addEventListener("mouseleave",start);
-  goTo(0);start();
-})();
-</script>
+<style>@media(max-width:800px){.nydla-pillars__grid{grid-template-columns:1fr!important}}</style>
 <!-- /wp:html -->

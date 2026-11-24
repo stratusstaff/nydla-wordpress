@@ -9,26 +9,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'NYDLA_WP_VERSION', '1.2.1' );
+define( 'NYDLA_WP_VERSION', '1.3.0' );
 define( 'NYDLA_WP_DIR', get_template_directory() );
 define( 'NYDLA_WP_URI', get_template_directory_uri() );
 
+require_once NYDLA_WP_DIR . '/inc/cmsp-placeholder.php';
+
 /**
- * Default NYDLA.org brand logo URL (theme asset).
- * Customizer logo overrides when set.
+ * NYDLA brand logo URL (bundled theme asset).
  *
  * @return string
  */
 function nydla_wp_brand_logo_url() {
-	if ( has_custom_logo() ) {
-		$logo_id = (int) get_theme_mod( 'custom_logo' );
-		$url     = $logo_id ? wp_get_attachment_image_url( $logo_id, 'full' ) : '';
-		if ( $url ) {
-			return $url;
-		}
+	$path = NYDLA_WP_DIR . '/assets/images/brand/nydla-logo-orange.png';
+	$url  = trailingslashit( NYDLA_WP_URI ) . 'assets/images/brand/nydla-logo-orange.png';
+	if ( file_exists( $path ) ) {
+		$url = add_query_arg( 'v', (string) filemtime( $path ), $url );
 	}
-
-	return trailingslashit( NYDLA_WP_URI ) . 'assets/images/brand/nydla-logo.png';
+	return $url;
 }
 
 /**
