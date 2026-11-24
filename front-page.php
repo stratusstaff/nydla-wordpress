@@ -1,6 +1,6 @@
 <?php
 /**
- * Front page — full-bleed home content (header/footer unchanged).
+ * Front page — Customizer partner carousel, then page content.
  *
  * @package Nydla_Wordpress
  */
@@ -9,6 +9,8 @@ get_header();
 ?>
 
 <div class="front-page">
+	<?php get_template_part( 'template-parts/partner', 'carousel' ); ?>
+
 	<?php if ( have_posts() ) : ?>
 		<?php while ( have_posts() ) : ?>
 			<?php the_post(); ?>

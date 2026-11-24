@@ -9,11 +9,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'NYDLA_WP_VERSION', '1.3.0' );
+define( 'NYDLA_WP_VERSION', '1.3.1' );
 define( 'NYDLA_WP_DIR', get_template_directory() );
 define( 'NYDLA_WP_URI', get_template_directory_uri() );
 
 require_once NYDLA_WP_DIR . '/inc/cmsp-placeholder.php';
+require_once NYDLA_WP_DIR . '/inc/customizer-partner-carousel.php';
 
 /**
  * Ensure Home (page ID 10) is the static front page once.
@@ -37,17 +38,36 @@ function nydla_wp_ensure_front_page() {
 add_action( 'init', 'nydla_wp_ensure_front_page', 20 );
 
 /**
- * NYDLA brand logo URL (bundled theme asset).
+ * NYDLA brand logo URL — Customizer logo first, then bundled orange mark.
  *
  * @return string
  */
 function nydla_wp_brand_logo_url() {
-	$path = NYDLA_WP_DIR . '/assets/images/brand/nydla-logo-orange.png';
-	$url  = trailingslashit( NYDLA_WP_URI ) . 'assets/images/brand/nydla-logo-orange.png';
-	if ( file_exists( $path ) ) {
-		$url = add_query_arg( 'v', (string) filemtime( $path ), $url );
+	$custom_id = (int) get_theme_mod( 'custom_logo' );
+	if ( $custom_id ) {
+		$custom_url = wp_get_attachment_image_url( $custom_id, 'full' );
+		if ( $custom_url ) {
+			return $custom_url;
+		}
 	}
-	return $url;
+
+	$candidates = array(
+		'assets/images/brand/nydla-logo-orange.png',
+		'assets/images/brand/nydla-logo.png',
+	);
+
+	foreach ( $candidates as $relative ) {
+		$path = NYDLA_WP_DIR . '/' . $relative;
+		if ( file_exists( $path ) ) {
+			return add_query_arg(
+				'v',
+				(string) filemtime( $path ),
+				trailingslashit( NYDLA_WP_URI ) . $relative
+			);
+		}
+	}
+
+	return trailingslashit( NYDLA_WP_URI ) . 'assets/images/brand/nydla-logo.png';
 }
 
 /**
