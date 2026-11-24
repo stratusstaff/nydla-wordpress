@@ -446,6 +446,7 @@ function nydla_wp_rest_theme_mod_keys() {
 		'nydla_show_giving',
 		'nydla_show_social',
 		'nydla_partner_slide_count',
+		'nydla_partner_backdrop',
 		'nydla_partner_1_image',
 		'nydla_partner_2_image',
 		'nydla_partner_3_image',

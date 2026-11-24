@@ -36,34 +36,70 @@ function nydla_wp_partner_slide_count() {
 }
 
 /**
+ * Default static carousel backdrop (shared skyline — not per slide).
+ *
+ * @return string
+ */
+function nydla_wp_partner_backdrop_default() {
+	// Ann Radoc pick: aerial Hudson Yards & Lower Manhattan.
+	return trailingslashit( NYDLA_WP_URI ) . 'assets/images/home/hero-hudson-yards.jpg';
+}
+
+/**
+ * Active static backdrop URL.
+ *
+ * @return string
+ */
+function nydla_wp_partner_backdrop() {
+	$url = (string) get_theme_mod( 'nydla_partner_backdrop', nydla_wp_partner_backdrop_default() );
+	if ( '' === $url ) {
+		$url = nydla_wp_partner_backdrop_default();
+	}
+	return $url;
+}
+
+/**
+ * Whether a stored slide image is an old full-bleed backdrop (not a partner main image).
+ *
+ * @param string $url Image URL.
+ * @return bool
+ */
+function nydla_wp_partner_image_is_legacy_backdrop( $url ) {
+	if ( '' === $url ) {
+		return true;
+	}
+	return ( false !== strpos( $url, 'skyline-hero.svg' ) )
+		|| ( false !== strpos( $url, 'hero-hudson-yards.jpg' ) );
+}
+
+/**
  * Default slide seed data (slots 1–10).
+ * Slide "image" = partner main image (logo / product), not the skyline backdrop.
  *
  * @return array<int, array<string, string>>
  */
 function nydla_wp_partner_slide_defaults() {
-	// Ann Radoc pick: aerial Hudson Yards & Lower Manhattan — main hero banner.
-	$hero = trailingslashit( NYDLA_WP_URI ) . 'assets/images/home/hero-hudson-yards.jpg';
 	$defaults = array(
 		1 => array(
 			'title'     => 'GoTo',
 			'text'      => 'Seamless modern meetings for teams that teach, train, and lead across time zones.',
 			'cta_label' => 'Learn more',
 			'cta_url'   => '#',
-			'image'     => $hero,
+			'image'     => '',
 		),
 		2 => array(
 			'title'     => 'Featured partner',
 			'text'      => 'Add a second Page-1 partner story in Appearance → Customize → Page-1 Partners.',
 			'cta_label' => 'Learn more',
 			'cta_url'   => '#',
-			'image'     => $hero,
+			'image'     => '',
 		),
 		3 => array(
 			'title'     => 'Featured partner',
 			'text'      => 'Add a third Page-1 partner story in Appearance → Customize → Page-1 Partners.',
 			'cta_label' => 'Learn more',
 			'cta_url'   => '#',
-			'image'     => $hero,
+			'image'     => '',
 		),
 	);
 
@@ -77,7 +113,7 @@ function nydla_wp_partner_slide_defaults() {
 			'text'      => __( 'Add this partner story in Appearance → Customize → Page-1 Partners.', 'nydla-wordpress' ),
 			'cta_label' => __( 'Learn more', 'nydla-wordpress' ),
 			'cta_url'   => '#',
-			'image'     => $hero,
+			'image'     => '',
 		);
 	}
 
@@ -109,7 +145,7 @@ function nydla_wp_customize_partner_carousel( $wp_customize ) {
 		'nydla_partner_carousel',
 		array(
 			'title'       => __( 'Page-1 Partners', 'nydla-wordpress' ),
-			'description' => __( 'Home hero carousel — sold featured-partner placements. Set how many slides (1–10), then edit each. Not the sponsors logo gallery.', 'nydla-wordpress' ),
+			'description' => __( 'Home hero carousel — one static skyline backdrop (like nydla.org). Each slide is main image + title + text + button. Not the sponsors logo gallery.', 'nydla-wordpress' ),
 			'panel'       => 'nydla_theme',
 			'priority'    => 50,
 		)
@@ -145,6 +181,27 @@ function nydla_wp_customize_partner_carousel( $wp_customize ) {
 				'max'  => nydla_wp_partner_slide_max(),
 				'step' => 1,
 			),
+		)
+	);
+
+	$wp_customize->add_setting(
+		'nydla_partner_backdrop',
+		array(
+			'default'           => nydla_wp_partner_backdrop_default(),
+			'sanitize_callback' => 'esc_url_raw',
+			'transport'         => 'refresh',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'nydla_partner_backdrop',
+			array(
+				'label'       => __( 'Static backdrop', 'nydla-wordpress' ),
+				'description' => __( 'Shared skyline behind every slide. Does not move when slides change.', 'nydla-wordpress' ),
+				'section'     => 'nydla_partner_carousel',
+				'priority'    => 2,
+			)
 		)
 	);
 
@@ -256,9 +313,10 @@ function nydla_wp_customize_partner_carousel( $wp_customize ) {
 				array_merge(
 					array(
 						/* translators: %d: slide number */
-						'label'    => sprintf( __( 'Slide %d — image', 'nydla-wordpress' ), $i ),
-						'section'  => 'nydla_partner_carousel',
-						'priority' => 14 + ( $i * 10 ),
+						'label'       => sprintf( __( 'Slide %d — main image', 'nydla-wordpress' ), $i ),
+						'description' => __( 'Partner logo or product shot (foreground). Optional — skyline stays on the static backdrop.', 'nydla-wordpress' ),
+						'section'     => 'nydla_partner_carousel',
+						'priority'    => 14 + ( $i * 10 ),
 					),
 					$active
 				)
@@ -285,9 +343,9 @@ function nydla_wp_get_partner_slides() {
 			continue;
 		}
 		$image = (string) get_theme_mod( "nydla_partner_{$i}_image", $def['image'] );
-		// Soft-migrate old SVG placeholder to Ann’s aerial hero pick.
-		if ( '' === $image || false !== strpos( $image, 'skyline-hero.svg' ) ) {
-			$image = $def['image'];
+		// Soft-migrate: old full-bleed skyline URLs are not partner main images.
+		if ( nydla_wp_partner_image_is_legacy_backdrop( $image ) ) {
+			$image = '';
 		}
 		$slides[] = array(
 			'title'     => $title,
