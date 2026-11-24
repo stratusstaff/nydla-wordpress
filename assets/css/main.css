@@ -37,6 +37,7 @@
 html {
 	scroll-behavior: smooth;
 	background-color: var(--nydla-navy);
+	overflow-x: clip;
 }
 
 body {
@@ -51,6 +52,8 @@ body {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
+	overflow-x: clip;
+	max-width: 100%;
 }
 
 img {
@@ -1212,10 +1215,11 @@ p {
 }
 
 .nydla-bleed {
-	width: 100vw;
-	max-width: 100vw;
-	margin-left: calc(50% - 50vw);
-	margin-right: calc(50% - 50vw);
+	/* Avoid 100vw — it includes the scrollbar and causes horizontal scroll. */
+	width: 100%;
+	max-width: 100%;
+	margin-left: 0;
+	margin-right: 0;
 }
 
 /* Hero carousel */
@@ -1226,10 +1230,13 @@ p {
 	overflow: hidden;
 	background: var(--nydla-ink);
 	min-height: min(88vh, 46rem);
+	width: 100%;
+	max-width: 100%;
 }
 
 .nydla-carousel__track {
 	display: flex;
+	width: 100%;
 	transition: transform 0.55s var(--nydla-ease);
 	will-change: transform;
 }
@@ -1237,9 +1244,12 @@ p {
 .nydla-carousel__slide {
 	position: relative;
 	flex: 0 0 100%;
+	width: 100%;
+	max-width: 100%;
 	min-height: min(88vh, 46rem);
 	display: grid;
 	align-items: end;
+	box-sizing: border-box;
 }
 
 .nydla-carousel__media {
