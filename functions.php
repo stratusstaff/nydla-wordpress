@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'NYDLA_WP_VERSION', '1.4.4' );
+define( 'NYDLA_WP_VERSION', '1.4.5' );
 define( 'NYDLA_WP_DIR', get_template_directory() );
 define( 'NYDLA_WP_URI', get_template_directory_uri() );
 

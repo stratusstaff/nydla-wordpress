@@ -1294,7 +1294,8 @@ p {
 	color: var(--nydla-white);
 	overflow: hidden;
 	background: var(--nydla-ink);
-	min-height: min(88vh, 46rem);
+	/* ~60% of prior min(88vh, 46rem) */
+	min-height: min(53vh, 28rem);
 	width: 100%;
 	max-width: 100%;
 }
@@ -1336,7 +1337,7 @@ p {
 	flex: 0 0 100%;
 	width: 100%;
 	max-width: 100%;
-	min-height: min(88vh, 46rem);
+	min-height: min(53vh, 28rem);
 	display: grid;
 	align-items: end;
 	justify-items: stretch;
